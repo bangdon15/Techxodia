@@ -95,8 +95,9 @@ function initProjectFilter() {
 
       const filter = btn.dataset.filter;
       cards.forEach((card) => {
-        const cat = card.dataset.category;
-        if (filter === 'all' || cat === filter) {
+        const cat = card.dataset.category || '';
+        const categories = cat.split(/\s+/);
+        if (filter === 'all' || categories.includes(filter)) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
@@ -115,6 +116,36 @@ function initCaseStudyModal() {
   const bodyContent = document.getElementById('modal-body-content');
 
   const caseStudies = {
+    valence: {
+      tag: 'Curated Architectural Atelier & Real Estate',
+      title: 'Valence Architectural Holdings',
+      client: 'Valence & Domain Atelier',
+      liveUrl: 'https://valence-realestate.vercel.app',
+      challenge: 'The client needed an editorial, anti-template real estate platform rejecting generic corporate MLS templates to showcase brutalist monoliths, minimal villas, and high-value acquisitions as an architectural monograph.',
+      solution: 'Engineered a bespoke web application with a simulated headless CMS property database, auto-rotating dynamic hero slider for top-valued assets, asymmetrical masonry layout, instant taxonomy filter engine, and accessible native modal quick-view system.',
+      impact: [
+        'Live production deployment on Vercel with sub-second page performance',
+        'Dynamic query and filter engine across architectural movements and availability states',
+        'High-density editorial typography paired with warm travertine and champagne accents',
+        'Integrated interactive confidential dossier inquiry workflow'
+      ],
+      tech: ['Modern JavaScript', 'Dynamic Property DB', 'CSS Grid & Flexbox', 'Glassmorphism Scrims', 'Vercel']
+    },
+    casitas: {
+      tag: 'Hospitality & Direct Reservation Engine',
+      title: 'Casitas Resort Online Booking System',
+      client: 'Casitas Resort & Private Stays',
+      liveUrl: 'https://resort-booking-online.vercel.app/',
+      challenge: 'The resort required a frictionless direct-booking web application where travelers can check live dates for five specific private casitas (Uno, Dos, Tres, Quatro, Singko), view rates, and obtain instant reservation codes without high third-party OTA commission fees.',
+      solution: 'Developed an interactive booking engine featuring stay-date validation, automated price calculations based on casita tier, client-side booking storage engine, and a dual-view guest and administrative portal.',
+      impact: [
+        'Instant date conflict validation and real-time casita availability status',
+        'Direct booking flow eliminating 15–20% third-party booking commissions',
+        'Automated unique reservation reference code generator and guest confirmation',
+        'Integrated Admin management portal to review and manage all reservations'
+      ],
+      tech: ['JavaScript ES6+', 'Availability Engine', 'LocalStorage State', 'Responsive UI', 'Vercel']
+    },
     krypton: {
       tag: 'Fintech Platform',
       title: 'Krypton Capital Trading Terminal',
@@ -176,8 +207,16 @@ function initCaseStudyModal() {
       if (!data || !modal || !bodyContent) return;
 
       bodyContent.innerHTML = `
-        <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--primary); margin-bottom: 8px;">
-          ${data.tag}
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
+          <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--primary); letter-spacing: 0.05em;">
+            ${data.tag}
+          </div>
+          ${data.liveUrl ? `
+            <a href="${data.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn-live-site" style="font-size: 0.78rem; padding: 4px 10px;">
+              <span>Launch Live Site</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          ` : ''}
         </div>
         <h3 style="font-size: 1.5rem; margin-bottom: 6px; color: #FFF;">${data.title}</h3>
         <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 20px;">Client: ${data.client}</p>
