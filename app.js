@@ -364,41 +364,24 @@ function initContactForm() {
 }
 
 /* ==========================================================================
-   7. Hero Interactive Holographic Brand Stage
+   7. Hero Interactive Spotlight Image (media_1790167990411.png)
    ========================================================================== */
 function initHeroBrandStage() {
-  const pulseBtn = document.getElementById('brand-pulse-btn');
-  const emblem = document.getElementById('hero-brand-emblem');
-  const stage = document.getElementById('brand-stage');
+  const heroImg = document.querySelector('.hero-spotlight-image');
+  const stage = document.querySelector('.hero-image-stage');
 
-  if (pulseBtn && emblem && stage) {
-    pulseBtn.addEventListener('click', () => {
-      stage.classList.add('brand-pulsing');
-      const origText = pulseBtn.innerHTML;
-      pulseBtn.innerHTML = '<span>⚡ Pulse Activated!</span>';
-      pulseBtn.style.background = 'var(--primary)';
-      pulseBtn.style.color = '#0A0D14';
-
-      setTimeout(() => {
-        stage.classList.remove('brand-pulsing');
-        pulseBtn.innerHTML = origText;
-        pulseBtn.style.background = '';
-        pulseBtn.style.color = '';
-      }, 2200);
-    });
-
-    // 3D tilt effect following cursor on stage
+  if (heroImg && stage) {
     stage.addEventListener('mousemove', (e) => {
       const rect = stage.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
-      const tiltX = (y / rect.height) * -12;
-      const tiltY = (x / rect.width) * 12;
-      emblem.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale(1.08)`;
+      const tiltX = (y / rect.height) * -8;
+      const tiltY = (x / rect.width) * 8;
+      heroImg.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale(1.04)`;
     });
 
     stage.addEventListener('mouseleave', () => {
-      emblem.style.transform = '';
+      heroImg.style.transform = '';
     });
   }
 }
