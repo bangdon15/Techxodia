@@ -517,292 +517,103 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   Hero Right Stage: Techxodia Interactive 3D Showcase (media_1790167990411.png)
+/* ==========================================================================
+   Hero Right Stage: Clean, Elegant Interactive Techxodia Logo
    ========================================================================== */
 .hero-image-stage {
   position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   padding: 16px 10px;
-  perspective: 1200px;
-  perspective-origin: center center;
+  perspective: 1000px;
   user-select: none;
 }
 
 .hero-image-glow-backdrop {
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(460px, 92%);
-  height: min(460px, 92%);
+  width: min(440px, 90%);
+  height: min(440px, 90%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.32) 0%, rgba(224, 138, 0, 0.12) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.24) 0%, rgba(224, 138, 0, 0.08) 50%, transparent 72%);
   filter: blur(50px);
   pointer-events: none;
-  animation: pulseGlow 5s ease-in-out infinite alternate;
+  animation: pulseGlow 6s ease-in-out infinite alternate;
   z-index: 1;
-  transition: transform 0.2s ease-out;
+  transition: transform 0.3s ease-out;
 }
 
-/* 3D Wrapper with preserve-3d */
-.logo-3d-wrapper {
-  --emboss-x: -1;
-  --emboss-y: -1;
+.logo-interactive-container {
   position: relative;
-  z-index: 3;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   transform-style: preserve-3d;
   will-change: transform;
   cursor: pointer;
-  border-radius: var(--radius-lg);
-  padding: 10px;
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: floatLogoIdle 6s ease-in-out infinite alternate;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.logo-3d-wrapper.is-tracking {
-  transition: none !important;
+.logo-interactive-container.is-hovered {
+  animation: none !important;
 }
 
-.logo-3d-wrapper:active {
-  cursor: grabbing;
+.logo-interactive-container.is-clicked {
+  animation: logoClickSpin 1s cubic-bezier(0.25, 1.2, 0.35, 1) forwards !important;
 }
 
-/* Idle 3D subtle orbit when mouse is not hovering */
-.logo-3d-wrapper.idle-floating {
-  animation: idle3DOrbit 10s ease-in-out infinite alternate;
-}
-
-/* 3D Click Spin Reaction */
-.logo-3d-wrapper.spinning-3d {
-  animation: spin3DClick 1.25s cubic-bezier(0.25, 1.2, 0.35, 1) forwards !important;
-}
-
-/* Luxury Recessed Embossed Plinth Medallion */
-.embossed-plinth-plate {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) translateZ(12px);
-  width: min(440px, 92%);
-  height: min(440px, 92%);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 35% 30%,
-    rgba(24, 32, 48, 0.72) 0%,
-    rgba(13, 17, 26, 0.85) 55%,
-    rgba(7, 10, 16, 0.94) 100%
-  );
-  border: 1px solid rgba(245, 158, 11, 0.22);
-  box-shadow:
-    /* Debossed inner bevel */
-    inset 2px 2px 4px rgba(0, 0, 0, 0.95),
-    inset -1px -1px 3px rgba(255, 235, 180, 0.14),
-    inset 0 0 25px rgba(0, 0, 0, 0.85),
-    /* Outer highlight ring & depth shadow */
-    0 1px 0 rgba(255, 235, 180, 0.15),
-    0 24px 50px rgba(0, 0, 0, 0.75);
-  pointer-events: none;
-  z-index: 1;
-  transition: transform 0.25s ease-out, border-color 0.3s ease;
-}
-
-.plinth-radial-glow {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle at 45% 45%, rgba(245, 158, 11, 0.14) 0%, transparent 68%);
-  pointer-events: none;
-}
-
-/* Embossed 3D High-Relief Logo */
-.hero-spotlight-image.embossed-logo {
-  position: relative;
-  z-index: 2;
+.hero-spotlight-image {
   width: 100%;
-  max-width: 480px;
+  max-width: 470px;
   height: auto;
   object-fit: contain;
   pointer-events: none;
-  transform-style: preserve-3d;
-  transform: translateZ(48px);
-  /* Genuine 3D physical emboss chiseled relief */
-  filter:
-    /* Sharp specular rim highlight (forged light edge) */
-    drop-shadow(calc(var(--emboss-x) * 1.8px) calc(var(--emboss-y) * 1.8px) 0.5px rgba(255, 248, 225, 0.96))
-    /* Secondary warm golden bevel reflection */
-    drop-shadow(calc(var(--emboss-x) * 3.6px) calc(var(--emboss-y) * 3.6px) 1.5px rgba(251, 191, 36, 0.55))
-    /* Deep undercut chiseled crevice shadow */
-    drop-shadow(calc(var(--emboss-x) * -1.8px) calc(var(--emboss-y) * -1.8px) 0.6px rgba(0, 0, 0, 0.98))
-    /* Secondary deep occlusion cast */
-    drop-shadow(calc(var(--emboss-x) * -4.8px) calc(var(--emboss-y) * -4.8px) 3px rgba(0, 0, 0, 0.92))
-    /* Physical suspension drop shadow */
-    drop-shadow(0 26px 42px rgba(0, 0, 0, 0.85))
-    /* Ambient warm gold luminescence */
-    drop-shadow(0 0 45px rgba(245, 158, 11, 0.4));
-  transition: filter 0.25s ease;
+  filter: drop-shadow(0 20px 38px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 35px rgba(245, 158, 11, 0.35));
+  transition: filter 0.4s ease, transform 0.4s ease;
 }
 
-/* Diagonal Specular Chisel Shimmer across raised ridges */
-.embossed-shimmer {
-  position: absolute;
-  inset: -15%;
-  border-radius: 50%;
-  background: linear-gradient(
-    115deg,
-    transparent 0%,
-    transparent 40%,
-    rgba(255, 240, 205, 0.25) 50%,
-    transparent 60%,
-    transparent 100%
-  );
-  transform: translateZ(58px);
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: 5;
-  animation: sweepEmbossShimmer 7s ease-in-out infinite;
-  opacity: 0;
+.logo-interactive-container:hover .hero-spotlight-image {
+  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 50px rgba(245, 158, 11, 0.55));
 }
 
-/* Dynamic Specular Glare Layer across 3D logo surface */
-.logo-3d-glare {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 4;
-  opacity: 0;
-  mix-blend-mode: overlay;
-  transition: opacity 0.3s ease;
-  transform: translateZ(64px);
-}
-
-/* Shockwave ring on click */
-.logo-shockwave {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 2px solid rgba(245, 158, 11, 0.8);
-  box-shadow: 0 0 25px rgba(245, 158, 11, 0.6);
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.logo-shockwave.active {
-  animation: shockwaveExpand 0.8s ease-out forwards;
-}
-
-/* Interactive Hint Chip */
-.interaction-hint-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 14px;
-  padding: 6px 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-dim);
-  letter-spacing: 0.04em;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
-  z-index: 4;
-  cursor: pointer;
-}
-
-.interaction-hint-chip:hover {
-  color: var(--primary);
-  border-color: rgba(245, 158, 11, 0.4);
-  background: rgba(245, 158, 11, 0.08);
-  transform: translateY(-2px);
-}
-
-.hint-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--primary);
-  box-shadow: 0 0 8px var(--primary);
-  animation: pulseDot 2s infinite ease-in-out;
-}
-
-@keyframes idle3DOrbit {
+@keyframes floatLogoIdle {
   0% {
-    transform: perspective(1200px) rotateY(-8deg) rotateX(6deg) translateY(0px);
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
   }
   50% {
-    transform: perspective(1200px) rotateY(8deg) rotateX(-5deg) translateY(-14px);
+    transform: translateY(-12px) rotateX(3deg) rotateY(-4deg);
   }
   100% {
-    transform: perspective(1200px) rotateY(-8deg) rotateX(6deg) translateY(0px);
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
   }
 }
 
-@keyframes spin3DClick {
+@keyframes logoClickSpin {
   0% {
-    transform: perspective(1200px) scale(0.94) rotateY(0deg) rotateX(0deg);
+    transform: scale(0.96) rotateY(0deg);
   }
-  40% {
-    transform: perspective(1200px) scale(1.15) rotateY(190deg) rotateX(-12deg);
-  }
-  75% {
-    transform: perspective(1200px) scale(1.06) rotateY(380deg) rotateX(6deg);
+  50% {
+    transform: scale(1.08) rotateY(180deg);
   }
   100% {
-    transform: perspective(1200px) scale(1) rotateY(360deg) rotateX(0deg);
-  }
-}
-
-@keyframes shockwaveExpand {
-  0% {
-    transform: translate(-50%, -50%) scale(0.3);
-    opacity: 1;
-    border-width: 4px;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(4.2);
-    opacity: 0;
-    border-width: 1px;
+    transform: scale(1) rotateY(360deg);
   }
 }
 
 @keyframes pulseGlow {
-  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.75; }
-  100% { transform: translate(-50%, -50%) scale(1.22); opacity: 1; }
-}
-
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
-}
-
-@keyframes sweepEmbossShimmer {
   0% {
-    transform: translateZ(58px) translateX(-110%) rotate(25deg);
-    opacity: 0;
-  }
-  12% {
-    opacity: 0.85;
-  }
-  28% {
-    transform: translateZ(58px) translateX(110%) rotate(25deg);
-    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.92);
+    opacity: 0.75;
   }
   100% {
-    transform: translateZ(58px) translateX(110%) rotate(25deg);
-    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
   }
 }
 

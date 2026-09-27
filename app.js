@@ -364,24 +364,14 @@ function initContactForm() {
 }
 
 /* ==========================================================================
-   7. Hero Interactive Spotlight Image (media_1790167990411.png)
-   ========================================================================== */
-/* ==========================================================================
-   7. Hero Interactive 3D Brand Logo Stage (media_1790167990411.png)
+   7. Hero Interactive Brand Logo Stage (media_1790167990411.png)
    ========================================================================== */
 function initHeroBrandStage() {
   const stage = document.getElementById('hero-logo-stage');
-  const wrapper = document.getElementById('logo-3d-wrapper');
-  const heroImg = document.getElementById('hero-spotlight-image');
-  const glare = document.getElementById('logo-3d-glare');
-  const shockwave = document.getElementById('logo-shockwave');
+  const container = document.getElementById('logo-interactive-container');
   const glowBackdrop = document.getElementById('hero-glow-backdrop');
-  const hintChip = document.querySelector('.interaction-hint-chip');
 
-  if (!stage || !wrapper || !heroImg) return;
-
-  // Set initial idle floating state
-  wrapper.classList.add('idle-floating');
+  if (!stage || !container) return;
 
   let isHovered = false;
   let isSpinning = false;
@@ -391,121 +381,67 @@ function initHeroBrandStage() {
   let currentRotY = 0;
   let targetScale = 1;
   let currentScale = 1;
-  let glareOpacity = 0;
-  let currentGlareOpacity = 0;
-  let lightX = 50;
-  let lightY = 50;
-  let currentLightX = 50;
-  let currentLightY = 50;
-  let targetEmbossX = -1;
-  let targetEmbossY = -1;
-  let currentEmbossX = -1;
-  let currentEmbossY = -1;
 
-  // Smooth 60fps physics render loop
-  function update3DPhysics() {
+  // Smooth gentle 60fps physics loop
+  function updatePhysics() {
     if (!isSpinning) {
       if (isHovered) {
-        // Interpolate rotation angles towards target
         currentRotX += (targetRotX - currentRotX) * 0.1;
         currentRotY += (targetRotY - currentRotY) * 0.1;
         currentScale += (targetScale - currentScale) * 0.1;
-        currentGlareOpacity += (glareOpacity - currentGlareOpacity) * 0.15;
-        currentLightX += (lightX - currentLightX) * 0.12;
-        currentLightY += (lightY - currentLightY) * 0.12;
-        currentEmbossX += (targetEmbossX - currentEmbossX) * 0.1;
-        currentEmbossY += (targetEmbossY - currentEmbossY) * 0.1;
 
-        wrapper.style.transform = `perspective(1200px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale(${currentScale.toFixed(3)})`;
-        wrapper.style.setProperty('--emboss-x', currentEmbossX.toFixed(3));
-        wrapper.style.setProperty('--emboss-y', currentEmbossY.toFixed(3));
+        container.style.transform = `perspective(1000px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale(${currentScale.toFixed(3)})`;
 
-        if (glare) {
-          glare.style.opacity = currentGlareOpacity.toFixed(2);
-          glare.style.background = `radial-gradient(circle at ${currentLightX.toFixed(1)}% ${currentLightY.toFixed(1)}%, rgba(255, 235, 175, 0.42) 0%, rgba(245, 158, 11, 0.18) 32%, transparent 68%)`;
-        }
-
-        // Parallax background glow opposite to tilt
         if (glowBackdrop) {
-          const glowX = -currentRotY * 1.8;
-          const glowY = currentRotX * 1.8;
-          glowBackdrop.style.transform = `translate(calc(-50% + ${glowX.toFixed(1)}px), calc(-50% + ${glowY.toFixed(1)}px)) scale(1.12)`;
+          const glowX = -currentRotY * 1.5;
+          const glowY = currentRotX * 1.5;
+          glowBackdrop.style.transform = `translate(calc(-50% + ${glowX.toFixed(1)}px), calc(-50% + ${glowY.toFixed(1)}px)) scale(1.08)`;
         }
       } else {
-        // Smoothly return emboss variables to classic 315-degree angle
-        currentEmbossX += (targetEmbossX - currentEmbossX) * 0.08;
-        currentEmbossY += (targetEmbossY - currentEmbossY) * 0.08;
-        wrapper.style.setProperty('--emboss-x', currentEmbossX.toFixed(3));
-        wrapper.style.setProperty('--emboss-y', currentEmbossY.toFixed(3));
-
-        // Return backdrop glow to center
+        // Return backdrop to neutral
         if (glowBackdrop && !glowBackdrop.style.transform.includes('-50%, -50%')) {
           glowBackdrop.style.transform = `translate(-50%, -50%)`;
         }
       }
     }
-
-    requestAnimationFrame(update3DPhysics);
+    requestAnimationFrame(updatePhysics);
   }
 
-  requestAnimationFrame(update3DPhysics);
+  requestAnimationFrame(updatePhysics);
 
-  // Mouse Move over stage calculates 3D normal vector
-  function handlePointerMove(clientX, clientY) {
+  function handlePointer(clientX, clientY) {
     if (isSpinning) return;
     const rect = stage.getBoundingClientRect();
     const x = clientX - rect.left;
     const y = clientY - rect.top;
 
-    // Normalize from -1 to 1 across stage
     const normX = Math.max(-1, Math.min(1, ((x / rect.width) - 0.5) * 2));
     const normY = Math.max(-1, Math.min(1, ((y / rect.height) - 0.5) * 2));
 
-    // Calculate 3D tilt (rotateX inverted for natural surface tilt)
-    targetRotX = -normY * 20;
-    targetRotY = normX * 22;
-    targetScale = 1.05;
-    glareOpacity = 0.85;
-
-    // Light source moves with cursor
-    lightX = ((normX + 1) / 2) * 100;
-    lightY = ((normY + 1) / 2) * 100;
-
-    // Directional relief emboss vectors
-    targetEmbossX = normX * 1.35;
-    targetEmbossY = normY * 1.35;
+    // Subtle, clean, tasteful tilt (max ±12 degrees)
+    targetRotX = -normY * 12;
+    targetRotY = normX * 14;
+    targetScale = 1.04;
   }
 
   stage.addEventListener('mousemove', (e) => {
     if (!isHovered) {
       isHovered = true;
-      wrapper.classList.remove('idle-floating');
-      wrapper.classList.add('is-tracking');
+      container.classList.add('is-hovered');
     }
-    handlePointerMove(e.clientX, e.clientY);
-  });
-
-  stage.addEventListener('mouseenter', () => {
-    isHovered = true;
-    wrapper.classList.remove('idle-floating');
-    wrapper.classList.add('is-tracking');
+    handlePointer(e.clientX, e.clientY);
   });
 
   stage.addEventListener('mouseleave', () => {
     isHovered = false;
-    wrapper.classList.remove('is-tracking');
     targetRotX = 0;
     targetRotY = 0;
     targetScale = 1;
-    glareOpacity = 0;
-    targetEmbossX = -1;
-    targetEmbossY = -1;
 
-    // Reset inline transform smoothly before restoring idle orbit
     setTimeout(() => {
       if (!isHovered && !isSpinning) {
-        wrapper.style.transform = '';
-        wrapper.classList.add('idle-floating');
+        container.style.transform = '';
+        container.classList.remove('is-hovered');
       }
     }, 280);
   });
@@ -515,65 +451,41 @@ function initHeroBrandStage() {
     if (e.touches && e.touches[0]) {
       if (!isHovered) {
         isHovered = true;
-        wrapper.classList.remove('idle-floating');
-        wrapper.classList.add('is-tracking');
+        container.classList.add('is-hovered');
       }
-      handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
+      handlePointer(e.touches[0].clientX, e.touches[0].clientY);
     }
   }, { passive: true });
 
   stage.addEventListener('touchend', () => {
     isHovered = false;
-    wrapper.classList.remove('is-tracking');
     targetRotX = 0;
     targetRotY = 0;
     targetScale = 1;
-    glareOpacity = 0;
-    targetEmbossX = -1;
-    targetEmbossY = -1;
     setTimeout(() => {
       if (!isHovered && !isSpinning) {
-        wrapper.style.transform = '';
-        wrapper.classList.add('idle-floating');
+        container.style.transform = '';
+        container.classList.remove('is-hovered');
       }
-    }, 300);
+    }, 280);
   });
 
-  // 3D Spin Action on Click
-  function trigger3DSpin() {
+  // Smooth click spin reaction
+  container.addEventListener('click', () => {
     if (isSpinning) return;
     isSpinning = true;
-    wrapper.classList.remove('idle-floating');
-    wrapper.classList.remove('is-tracking');
-
-    // Trigger shockwave
-    if (shockwave) {
-      shockwave.classList.remove('active');
-      void shockwave.offsetWidth; // Force reflow
-      shockwave.classList.add('active');
-    }
-
-    // Intensify hero image glow during spin
-    heroImg.style.filter = 'drop-shadow(0 25px 45px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 65px rgba(245, 158, 11, 0.75))';
-
-    wrapper.classList.add('spinning-3d');
+    container.classList.remove('is-hovered');
+    container.classList.add('is-clicked');
 
     setTimeout(() => {
-      wrapper.classList.remove('spinning-3d');
-      heroImg.style.filter = '';
+      container.classList.remove('is-clicked');
       isSpinning = false;
-
-      if (!isHovered) {
-        wrapper.classList.add('idle-floating');
+      if (isHovered) {
+        container.classList.add('is-hovered');
+        container.style.transform = `perspective(1000px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale(${currentScale.toFixed(3)})`;
       } else {
-        wrapper.style.transform = `perspective(1200px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale(${currentScale.toFixed(3)})`;
+        container.style.transform = '';
       }
-    }, 1250);
-  }
-
-  wrapper.addEventListener('click', trigger3DSpin);
-
-  if (hintChip) {
-    hintChip.addEventListener('click', trigger3DSpin);
-  }
+    }, 1000);
+  });
 }
