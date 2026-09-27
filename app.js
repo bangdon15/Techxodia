@@ -6,7 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initAmbientGlowFollow();
   initNavbar();
-  initHeroTerminal();
+  initHeroBrandStage();
   initProjectFilter();
   initCaseStudyModal();
   initEstimator();
@@ -364,55 +364,41 @@ function initContactForm() {
 }
 
 /* ==========================================================================
-   7. Hero Interactive Studio Terminal
+   7. Hero Interactive Holographic Brand Stage
    ========================================================================== */
-function initHeroTerminal() {
-  const tabs = document.querySelectorAll('.terminal-tab');
-  const panes = document.querySelectorAll('.terminal-pane');
-  const simBtn = document.getElementById('terminal-sim-btn');
+function initHeroBrandStage() {
+  const pulseBtn = document.getElementById('brand-pulse-btn');
+  const emblem = document.getElementById('hero-brand-emblem');
+  const stage = document.getElementById('brand-stage');
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      panes.forEach(p => p.classList.remove('active'));
-
-      tab.classList.add('active');
-      const targetPane = document.getElementById(`pane-${tab.dataset.pane}`);
-      if (targetPane) {
-        targetPane.classList.add('active');
-      }
-    });
-  });
-
-  if (simBtn) {
-    simBtn.addEventListener('click', () => {
-      const origText = simBtn.innerHTML;
-      simBtn.innerHTML = '<span>⚡ Pinging PoPs...</span>';
-      simBtn.style.background = 'var(--primary)';
-      simBtn.style.color = '#0A0D14';
-
-      // Switch to telemetry tab if not active
-      const telemetryTab = document.querySelector('[data-pane="telemetry"]');
-      if (telemetryTab && !telemetryTab.classList.contains('active')) {
-        telemetryTab.click();
-      }
-
-      const telemetryPane = document.getElementById('pane-telemetry');
-      if (telemetryPane) {
-        const now = new Date().toTimeString().split(' ')[0] + '.' + Math.floor(Math.random() * 900 + 100);
-        const newLog = document.createElement('div');
-        newLog.style.marginTop = '6px';
-        newLog.style.color = '#38BDF8';
-        newLog.innerHTML = `<span class="t-str">[${now}]</span> <span class="t-fn">SIMULATE_EDGE</span> &rarr; Global CDN Ping: <strong>14ms</strong> &bull; Zero Bottlenecks Detected`;
-        telemetryPane.appendChild(newLog);
-        telemetryPane.scrollTop = telemetryPane.scrollHeight;
-      }
+  if (pulseBtn && emblem && stage) {
+    pulseBtn.addEventListener('click', () => {
+      stage.classList.add('brand-pulsing');
+      const origText = pulseBtn.innerHTML;
+      pulseBtn.innerHTML = '<span>⚡ Pulse Activated!</span>';
+      pulseBtn.style.background = 'var(--primary)';
+      pulseBtn.style.color = '#0A0D14';
 
       setTimeout(() => {
-        simBtn.innerHTML = origText;
-        simBtn.style.background = '';
-        simBtn.style.color = '';
-      }, 1600);
+        stage.classList.remove('brand-pulsing');
+        pulseBtn.innerHTML = origText;
+        pulseBtn.style.background = '';
+        pulseBtn.style.color = '';
+      }, 2200);
+    });
+
+    // 3D tilt effect following cursor on stage
+    stage.addEventListener('mousemove', (e) => {
+      const rect = stage.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const tiltX = (y / rect.height) * -12;
+      const tiltY = (x / rect.width) * 12;
+      emblem.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale(1.08)`;
+    });
+
+    stage.addEventListener('mouseleave', () => {
+      emblem.style.transform = '';
     });
   }
 }

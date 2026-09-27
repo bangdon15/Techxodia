@@ -110,9 +110,9 @@
           </div>
         </div>
 
-        <!-- Right Column: Interactive Live Studio Terminal & Architecture Canvas -->
-        <div class="hero-terminal-stage">
-          <!-- Floating Telemetry Chips taking advantage of screen width -->
+        <!-- Right Column: Techxodia Holographic Brand Showcase Stage -->
+        <div class="hero-brand-showcase-stage">
+          <!-- Floating Outer Badges -->
           <div class="floating-tech-chip chip-top-right">
             <span class="chip-icon">⚡</span>
             <div class="chip-info">
@@ -129,74 +129,40 @@
             </div>
           </div>
 
-          <!-- Glass Terminal Window -->
-          <div class="terminal-window">
-            <div class="terminal-header">
-              <div class="terminal-dots">
-                <span class="dot-red"></span>
-                <span class="dot-yellow"></span>
-                <span class="dot-green"></span>
+          <!-- Glass Hologram Stage Card -->
+          <div class="brand-hologram-stage" id="brand-stage">
+            <!-- Concentric Orbital Glow Rings -->
+            <div class="orbital-stage-center">
+              <div class="orbital-ring ring-outer"></div>
+              <div class="orbital-ring ring-mid"></div>
+              <div class="orbital-ring ring-inner"></div>
+              <div class="brand-core-spotlight"></div>
+            </div>
+
+            <!-- Center Logo Showcase -->
+            <div class="brand-logo-showcase-center">
+              <div class="emblem-halo">
+                <img src="techxodia-emblem.png" alt="Techxodia Emblem" class="hero-brand-emblem" id="hero-brand-emblem">
               </div>
-              <div class="terminal-tabs" role="tablist">
-                <button class="terminal-tab active" data-pane="arch">Architecture.ts</button>
-                <button class="terminal-tab" data-pane="telemetry">LiveTelemetry.log</button>
-                <button class="terminal-tab" data-pane="stack">Stack.json</button>
-              </div>
-              <div class="terminal-status-badge">
-                <span class="pulse-green"></span> Live 24ms
+              <img src="techxodia-wordmark.png" alt="TECHXODIA" class="hero-brand-wordmark">
+              <p class="brand-showcase-motto">Architecting Tomorrow's Digital Experience Today</p>
+
+              <!-- Studio Capability Badges -->
+              <div class="brand-feature-pills">
+                <span class="brand-pill"><span class="pill-dot"></span> Full-Cycle Engineering</span>
+                <span class="brand-pill"><span class="pill-dot"></span> Autonomous AI</span>
+                <span class="brand-pill"><span class="pill-dot"></span> High-Performance</span>
               </div>
             </div>
 
-            <div class="terminal-body">
-              <!-- Tab 1: Architecture Code -->
-              <div class="terminal-pane active" id="pane-arch">
-                <span class="t-comment">// Techxodia Production Architecture Engine</span><br>
-                <span class="t-kw">import</span> { <span class="t-type">NextApp</span>, <span class="t-type">AIEngine</span>, <span class="t-type">PostgresEdge</span> } <span class="t-kw">from</span> <span class="t-str">'@techxodia/core'</span>;<br><br>
-                <span class="t-kw">export const</span> <span class="t-fn">buildDigitalProduct</span> = <span class="t-kw">async</span> (<span class="t-prop">client</span>: <span class="t-type">AmbitiousBrand</span>) =&gt; {<br>
-                &nbsp;&nbsp;<span class="t-kw">const</span> <span class="t-prop">pipeline</span> = <span class="t-kw">new</span> <span class="t-fn">HighPerformanceStack</span>({<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-prop">latencyTarget</span>: <span class="t-str">'&lt; 50ms'</span>,<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-prop">scalability</span>: <span class="t-num">10_000_000</span>, <span class="t-comment">// Daily Active Users</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-prop">intelligentAgents</span>: <span class="t-kw">true</span>,<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-prop">securityAudit</span>: <span class="t-str">'A+ Grade Zero-Trust'</span><br>
-                &nbsp;&nbsp;});<br><br>
-                &nbsp;&nbsp;<span class="t-kw">return await</span> <span class="t-prop">pipeline</span>.<span class="t-fn">deployToEdge</span>({ <span class="t-prop">sla</span>: <span class="t-num">0.9999</span> });<br>
-                };
+            <!-- Interactive Stage Footer Bar -->
+            <div class="brand-stage-footer">
+              <div class="stage-status-indicator">
+                <span class="pulse-green"></span>
+                <span class="stage-status-text">STUDIO CORE &bull; ONLINE</span>
               </div>
-
-              <!-- Tab 2: Live Telemetry Stream -->
-              <div class="terminal-pane" id="pane-telemetry">
-                <span class="t-comment">[SYSTEM STATUS: NORMAL | REGION: GLOBAL EDGE]</span><br>
-                <span class="t-str">[19:42:01.104]</span> <span class="t-fn">GET</span> /api/v2/products &rarr; <span class="t-num">200 OK</span> <span class="t-accent">(18ms)</span><br>
-                <span class="t-str">[19:42:01.218]</span> <span class="t-fn">CACHE_HIT</span>: Cloudflare Edge Worker &bull; 99.4% hit-rate<br>
-                <span class="t-str">[19:42:01.350]</span> <span class="t-kw">AI_AGENT</span>: Vector Context Retrieval Completed <span class="t-accent">(32ms)</span><br>
-                <span class="t-str">[19:42:01.492]</span> <span class="t-fn">DB_CLUSTER</span>: Postgres Read-Replica Healthy &bull; 0.04% CPU<br>
-                <span class="t-str">[19:42:01.620]</span> <span class="t-type">HEALTHCHECK</span>: 54 Global PoPs active &bull; <span class="t-num">Zero Errors</span>
-              </div>
-
-              <!-- Tab 3: Tech Stack JSON -->
-              <div class="terminal-pane" id="pane-stack">
-                {<br>
-                &nbsp;&nbsp;<span class="t-prop">"studio"</span>: <span class="t-str">"Techxodia"</span>,<br>
-                &nbsp;&nbsp;<span class="t-prop">"tier"</span>: <span class="t-str">"Enterprise Engineering &amp; AI"</span>,<br>
-                &nbsp;&nbsp;<span class="t-prop">"frontend"</span>: [<span class="t-str">"Next.js 15"</span>, <span class="t-str">"TypeScript"</span>, <span class="t-str">"Tailwind"</span>],<br>
-                &nbsp;&nbsp;<span class="t-prop">"backend"</span>: [<span class="t-str">"Node.js"</span>, <span class="t-str">"Python/FastAPI"</span>, <span class="t-str">"PostgreSQL"</span>],<br>
-                &nbsp;&nbsp;<span class="t-prop">"cloud"</span>: [<span class="t-str">"AWS"</span>, <span class="t-str">"Vercel Edge"</span>, <span class="t-str">"Docker/K8s"</span>],<br>
-                &nbsp;&nbsp;<span class="t-prop">"ai_core"</span>: [<span class="t-str">"Autonomous Multi-Agent"</span>, <span class="t-str">"RAG"</span>]<br>
-                }
-              </div>
-            </div>
-
-            <!-- Terminal Footer Bar -->
-            <div class="terminal-footer-bar">
-              <div class="terminal-brand-emblem-wrap">
-                <img src="techxodia-emblem.png" alt="Techxodia Logo" class="terminal-emblem">
-                <div>
-                  <div class="terminal-brand-text">TECHXODIA SYSTEM CORE</div>
-                  <div class="terminal-brand-sub">Production Ready Architecture</div>
-                </div>
-              </div>
-              <button class="terminal-interactive-btn" id="terminal-sim-btn">
-                <span>⚡ Simulate Ping</span>
+              <button class="brand-pulse-btn" id="brand-pulse-btn">
+                <span>✨ Ignite Brand Glow</span>
               </button>
             </div>
           </div>
@@ -205,36 +171,31 @@
       </div>
     </div>
 
-    <!-- Edge-to-Edge Full-Screen Animated Infinite Tech Stack Marquee -->
-    <div class="tech-marquee-wrapper" aria-label="Technologies used by Techxodia">
+    <!-- Edge-to-Edge Full-Screen Animated Infinite Studio Superpowers Marquee -->
+    <div class="tech-marquee-wrapper" aria-label="Techxodia Core Superpowers & Capabilities">
       <div class="marquee-track">
-        <div class="marquee-item"><span class="marquee-dot"></span> Next.js 15</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> TypeScript</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> React 19</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> Python &amp; FastAPI</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> PostgreSQL</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> Autonomous AI Agents</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> Docker &amp; Kubernetes</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> AWS Cloud</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> Supabase</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> Node.js Microservices</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> Redis In-Memory</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> GraphQL APIs</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> Vercel Edge Runtime</div>
-        <!-- Duplicate set for seamless looping -->
-        <div class="marquee-item"><span class="marquee-dot"></span> Next.js 15</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> TypeScript</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> React 19</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> Python &amp; FastAPI</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> PostgreSQL</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> Autonomous AI Agents</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> Docker &amp; Kubernetes</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> AWS Cloud</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> Supabase</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> Node.js Microservices</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> Redis In-Memory</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> GraphQL APIs</div>
-        <div class="marquee-item"><span class="marquee-dot"></span> Vercel Edge Runtime</div>
+        <div class="marquee-item"><span class="marquee-badge">✦</span> ZERO TECHNICAL DEBT <span class="marquee-highlight">BY DESIGN</span></div>
+        <div class="marquee-item"><span class="marquee-badge">⚡</span> &lt;50MS SUB-SECOND <span class="marquee-highlight">GLOBAL EDGE SPEED</span></div>
+        <div class="marquee-item"><span class="marquee-badge">🚀</span> CONCEPT TO PRODUCTION <span class="marquee-highlight">IN 4 WEEKS</span></div>
+        <div class="marquee-item"><span class="marquee-badge">🤖</span> AUTONOMOUS <span class="marquee-highlight">AI AGENT PIPELINES</span></div>
+        <div class="marquee-item"><span class="marquee-badge">💎</span> BESPOKE <span class="marquee-highlight">PIXEL-PERFECT CRAFT</span></div>
+        <div class="marquee-item"><span class="marquee-badge">🛡️</span> ZERO-TRUST <span class="marquee-highlight">ENTERPRISE SECURITY</span></div>
+        <div class="marquee-item"><span class="marquee-badge">📈</span> ARCHITECTED TO SCALE <span class="marquee-highlight">10M+ USERS</span></div>
+        <div class="marquee-item"><span class="marquee-badge">🔥</span> 100% INTELLECTUAL <span class="marquee-highlight">PROPERTY OWNERSHIP</span></div>
+        <div class="marquee-item"><span class="marquee-badge">🌐</span> FULL-STACK WEB &amp; MOBILE <span class="marquee-highlight">ECOSYSTEMS</span></div>
+        <div class="marquee-item"><span class="marquee-badge">✨</span> $150M+ CLIENT VALUATION <span class="marquee-highlight">CAPITAL SCALED</span></div>
+
+        <!-- Duplicate set for continuous seamless loop -->
+        <div class="marquee-item"><span class="marquee-badge">✦</span> ZERO TECHNICAL DEBT <span class="marquee-highlight">BY DESIGN</span></div>
+        <div class="marquee-item"><span class="marquee-badge">⚡</span> &lt;50MS SUB-SECOND <span class="marquee-highlight">GLOBAL EDGE SPEED</span></div>
+        <div class="marquee-item"><span class="marquee-badge">🚀</span> CONCEPT TO PRODUCTION <span class="marquee-highlight">IN 4 WEEKS</span></div>
+        <div class="marquee-item"><span class="marquee-badge">🤖</span> AUTONOMOUS <span class="marquee-highlight">AI AGENT PIPELINES</span></div>
+        <div class="marquee-item"><span class="marquee-badge">💎</span> BESPOKE <span class="marquee-highlight">PIXEL-PERFECT CRAFT</span></div>
+        <div class="marquee-item"><span class="marquee-badge">🛡️</span> ZERO-TRUST <span class="marquee-highlight">ENTERPRISE SECURITY</span></div>
+        <div class="marquee-item"><span class="marquee-badge">📈</span> ARCHITECTED TO SCALE <span class="marquee-highlight">10M+ USERS</span></div>
+        <div class="marquee-item"><span class="marquee-badge">🔥</span> 100% INTELLECTUAL <span class="marquee-highlight">PROPERTY OWNERSHIP</span></div>
+        <div class="marquee-item"><span class="marquee-badge">🌐</span> FULL-STACK WEB &amp; MOBILE <span class="marquee-highlight">ECOSYSTEMS</span></div>
+        <div class="marquee-item"><span class="marquee-badge">✨</span> $150M+ CLIENT VALUATION <span class="marquee-highlight">CAPITAL SCALED</span></div>
       </div>
     </div>
   </section>
