@@ -550,6 +550,8 @@ h1, h2, h3, h4 {
 
 /* 3D Wrapper with preserve-3d */
 .logo-3d-wrapper {
+  --emboss-x: -1;
+  --emboss-y: -1;
   position: relative;
   z-index: 3;
   display: flex;
@@ -581,7 +583,45 @@ h1, h2, h3, h4 {
   animation: spin3DClick 1.25s cubic-bezier(0.25, 1.2, 0.35, 1) forwards !important;
 }
 
-.hero-spotlight-image {
+/* Luxury Recessed Embossed Plinth Medallion */
+.embossed-plinth-plate {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(12px);
+  width: min(440px, 92%);
+  height: min(440px, 92%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    rgba(24, 32, 48, 0.72) 0%,
+    rgba(13, 17, 26, 0.85) 55%,
+    rgba(7, 10, 16, 0.94) 100%
+  );
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  box-shadow:
+    /* Debossed inner bevel */
+    inset 2px 2px 4px rgba(0, 0, 0, 0.95),
+    inset -1px -1px 3px rgba(255, 235, 180, 0.14),
+    inset 0 0 25px rgba(0, 0, 0, 0.85),
+    /* Outer highlight ring & depth shadow */
+    0 1px 0 rgba(255, 235, 180, 0.15),
+    0 24px 50px rgba(0, 0, 0, 0.75);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.25s ease-out, border-color 0.3s ease;
+}
+
+.plinth-radial-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 45% 45%, rgba(245, 158, 11, 0.14) 0%, transparent 68%);
+  pointer-events: none;
+}
+
+/* Embossed 3D High-Relief Logo */
+.hero-spotlight-image.embossed-logo {
   position: relative;
   z-index: 2;
   width: 100%;
@@ -590,9 +630,43 @@ h1, h2, h3, h4 {
   object-fit: contain;
   pointer-events: none;
   transform-style: preserve-3d;
-  transform: translateZ(40px);
-  filter: drop-shadow(0 20px 38px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 45px rgba(245, 158, 11, 0.48));
-  transition: filter 0.4s ease;
+  transform: translateZ(48px);
+  /* Genuine 3D physical emboss chiseled relief */
+  filter:
+    /* Sharp specular rim highlight (forged light edge) */
+    drop-shadow(calc(var(--emboss-x) * 1.8px) calc(var(--emboss-y) * 1.8px) 0.5px rgba(255, 248, 225, 0.96))
+    /* Secondary warm golden bevel reflection */
+    drop-shadow(calc(var(--emboss-x) * 3.6px) calc(var(--emboss-y) * 3.6px) 1.5px rgba(251, 191, 36, 0.55))
+    /* Deep undercut chiseled crevice shadow */
+    drop-shadow(calc(var(--emboss-x) * -1.8px) calc(var(--emboss-y) * -1.8px) 0.6px rgba(0, 0, 0, 0.98))
+    /* Secondary deep occlusion cast */
+    drop-shadow(calc(var(--emboss-x) * -4.8px) calc(var(--emboss-y) * -4.8px) 3px rgba(0, 0, 0, 0.92))
+    /* Physical suspension drop shadow */
+    drop-shadow(0 26px 42px rgba(0, 0, 0, 0.85))
+    /* Ambient warm gold luminescence */
+    drop-shadow(0 0 45px rgba(245, 158, 11, 0.4));
+  transition: filter 0.25s ease;
+}
+
+/* Diagonal Specular Chisel Shimmer across raised ridges */
+.embossed-shimmer {
+  position: absolute;
+  inset: -15%;
+  border-radius: 50%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 240, 205, 0.25) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  transform: translateZ(58px);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 5;
+  animation: sweepEmbossShimmer 7s ease-in-out infinite;
+  opacity: 0;
 }
 
 /* Dynamic Specular Glare Layer across 3D logo surface */
@@ -605,7 +679,7 @@ h1, h2, h3, h4 {
   opacity: 0;
   mix-blend-mode: overlay;
   transition: opacity 0.3s ease;
-  transform: translateZ(60px);
+  transform: translateZ(64px);
 }
 
 /* Shockwave ring on click */
@@ -712,6 +786,24 @@ h1, h2, h3, h4 {
 @keyframes pulseDot {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+@keyframes sweepEmbossShimmer {
+  0% {
+    transform: translateZ(58px) translateX(-110%) rotate(25deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.85;
+  }
+  28% {
+    transform: translateZ(58px) translateX(110%) rotate(25deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(58px) translateX(110%) rotate(25deg);
+    opacity: 0;
+  }
 }
 
 /* ==========================================================================

@@ -397,6 +397,10 @@ function initHeroBrandStage() {
   let lightY = 50;
   let currentLightX = 50;
   let currentLightY = 50;
+  let targetEmbossX = -1;
+  let targetEmbossY = -1;
+  let currentEmbossX = -1;
+  let currentEmbossY = -1;
 
   // Smooth 60fps physics render loop
   function update3DPhysics() {
@@ -409,8 +413,12 @@ function initHeroBrandStage() {
         currentGlareOpacity += (glareOpacity - currentGlareOpacity) * 0.15;
         currentLightX += (lightX - currentLightX) * 0.12;
         currentLightY += (lightY - currentLightY) * 0.12;
+        currentEmbossX += (targetEmbossX - currentEmbossX) * 0.1;
+        currentEmbossY += (targetEmbossY - currentEmbossY) * 0.1;
 
         wrapper.style.transform = `perspective(1200px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale(${currentScale.toFixed(3)})`;
+        wrapper.style.setProperty('--emboss-x', currentEmbossX.toFixed(3));
+        wrapper.style.setProperty('--emboss-y', currentEmbossY.toFixed(3));
 
         if (glare) {
           glare.style.opacity = currentGlareOpacity.toFixed(2);
@@ -424,6 +432,12 @@ function initHeroBrandStage() {
           glowBackdrop.style.transform = `translate(calc(-50% + ${glowX.toFixed(1)}px), calc(-50% + ${glowY.toFixed(1)}px)) scale(1.12)`;
         }
       } else {
+        // Smoothly return emboss variables to classic 315-degree angle
+        currentEmbossX += (targetEmbossX - currentEmbossX) * 0.08;
+        currentEmbossY += (targetEmbossY - currentEmbossY) * 0.08;
+        wrapper.style.setProperty('--emboss-x', currentEmbossX.toFixed(3));
+        wrapper.style.setProperty('--emboss-y', currentEmbossY.toFixed(3));
+
         // Return backdrop glow to center
         if (glowBackdrop && !glowBackdrop.style.transform.includes('-50%, -50%')) {
           glowBackdrop.style.transform = `translate(-50%, -50%)`;
@@ -456,6 +470,10 @@ function initHeroBrandStage() {
     // Light source moves with cursor
     lightX = ((normX + 1) / 2) * 100;
     lightY = ((normY + 1) / 2) * 100;
+
+    // Directional relief emboss vectors
+    targetEmbossX = normX * 1.35;
+    targetEmbossY = normY * 1.35;
   }
 
   stage.addEventListener('mousemove', (e) => {
@@ -480,6 +498,8 @@ function initHeroBrandStage() {
     targetRotY = 0;
     targetScale = 1;
     glareOpacity = 0;
+    targetEmbossX = -1;
+    targetEmbossY = -1;
 
     // Reset inline transform smoothly before restoring idle orbit
     setTimeout(() => {
@@ -509,6 +529,8 @@ function initHeroBrandStage() {
     targetRotY = 0;
     targetScale = 1;
     glareOpacity = 0;
+    targetEmbossX = -1;
+    targetEmbossY = -1;
     setTimeout(() => {
       if (!isHovered && !isSpinning) {
         wrapper.style.transform = '';
