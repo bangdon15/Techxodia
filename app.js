@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initAmbientGlowFollow();
   initNavbar();
+  initHeroTerminal();
   initProjectFilter();
   initCaseStudyModal();
   initEstimator();
@@ -358,6 +359,60 @@ function initContactForm() {
           btn.style.color = '';
         }, 4000);
       }, 900);
+    });
+  }
+}
+
+/* ==========================================================================
+   7. Hero Interactive Studio Terminal
+   ========================================================================== */
+function initHeroTerminal() {
+  const tabs = document.querySelectorAll('.terminal-tab');
+  const panes = document.querySelectorAll('.terminal-pane');
+  const simBtn = document.getElementById('terminal-sim-btn');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+
+      tab.classList.add('active');
+      const targetPane = document.getElementById(`pane-${tab.dataset.pane}`);
+      if (targetPane) {
+        targetPane.classList.add('active');
+      }
+    });
+  });
+
+  if (simBtn) {
+    simBtn.addEventListener('click', () => {
+      const origText = simBtn.innerHTML;
+      simBtn.innerHTML = '<span>⚡ Pinging PoPs...</span>';
+      simBtn.style.background = 'var(--primary)';
+      simBtn.style.color = '#0A0D14';
+
+      // Switch to telemetry tab if not active
+      const telemetryTab = document.querySelector('[data-pane="telemetry"]');
+      if (telemetryTab && !telemetryTab.classList.contains('active')) {
+        telemetryTab.click();
+      }
+
+      const telemetryPane = document.getElementById('pane-telemetry');
+      if (telemetryPane) {
+        const now = new Date().toTimeString().split(' ')[0] + '.' + Math.floor(Math.random() * 900 + 100);
+        const newLog = document.createElement('div');
+        newLog.style.marginTop = '6px';
+        newLog.style.color = '#38BDF8';
+        newLog.innerHTML = `<span class="t-str">[${now}]</span> <span class="t-fn">SIMULATE_EDGE</span> &rarr; Global CDN Ping: <strong>14ms</strong> &bull; Zero Bottlenecks Detected`;
+        telemetryPane.appendChild(newLog);
+        telemetryPane.scrollTop = telemetryPane.scrollHeight;
+      }
+
+      setTimeout(() => {
+        simBtn.innerHTML = origText;
+        simBtn.style.background = '';
+        simBtn.style.color = '';
+      }, 1600);
     });
   }
 }

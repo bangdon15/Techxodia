@@ -10,11 +10,13 @@
 </head>
 <body>
 
-  <!-- Animated Moving Warm Yellow / Golden Ambient Light Mesh -->
+  <!-- Animated Moving Warm Yellow & Cyber Ambient Light Mesh -->
   <div class="ambient-mesh-container" aria-hidden="true">
+    <div class="cyber-grid-overlay"></div>
     <div class="moving-light-orb orb-1"></div>
     <div class="moving-light-orb orb-2"></div>
     <div class="moving-light-orb orb-3"></div>
+    <div class="moving-light-orb orb-4"></div>
     <div class="moving-light-orb orb-cursor" id="orb-cursor"></div>
   </div>
 
@@ -53,69 +55,187 @@
   </header>
 
   <!-- ==========================================================================
-       Hero Section: Clean, Confident & Elegant
+       Hero Section: Full-Screen Studio Split Stage & Interactive Hub
        ========================================================================== -->
   <section class="hero-section" id="hero">
-    <div class="container hero-container">
-      
-      <!-- Announcement Chip -->
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        <span>Software Engineering &amp; AI Studio</span>
-      </div>
+    <div class="container">
+      <div class="hero-grid-stage">
+        
+        <!-- Left Column: Command & Value Proposition -->
+        <div class="hero-content">
+          <!-- Announcement Chip -->
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>Software Engineering &amp; AI Studio</span>
+            <span class="badge-sub">Available Q3/Q4</span>
+          </div>
 
-      <!-- Main Headline -->
-      <h1 class="hero-heading">
-        We build scalable web, mobile &amp; <br>
-        <span class="highlight-text">intelligent software</span> for ambitious brands.
-      </h1>
+          <!-- Main Headline -->
+          <h1 class="hero-heading">
+            We build scalable web, mobile &amp; <br>
+            <span class="highlight-text">intelligent software</span> for ambitious brands.
+          </h1>
 
-      <p class="hero-subheading">
-        Techxodia partners with founders and engineering leaders to design, develop, and launch high-performance digital products that look great and drive real business revenue.
-      </p>
+          <p class="hero-subheading">
+            Techxodia partners with founders and engineering leaders to design, architect, and launch high-performance digital products that look great and drive real business revenue.
+          </p>
 
-      <!-- CTA Buttons -->
-      <div class="hero-actions">
-        <a href="#work" class="btn btn-primary btn-lg">
-          View Our Work
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
-        <a href="#estimator" class="btn btn-outline btn-lg">Estimate Your Project</a>
-      </div>
+          <!-- CTA Buttons -->
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-primary btn-lg">
+              Explore Our Work
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#estimator" class="btn btn-outline btn-lg">Estimate Your Project</a>
+          </div>
 
-      <!-- Logo & Showcase Banner Stage -->
-      <div class="hero-brand-stage">
-        <div class="brand-card">
-          <div class="brand-card-inner">
-            <div class="brand-showcase-visual">
-              <img src="techxodia-emblem.png" alt="Techxodia Icon" class="showcase-emblem">
-              <img src="techxodia-wordmark.png" alt="Techxodia Wordmark" class="showcase-wordmark">
-              <p class="showcase-tagline">Architecting Tomorrow's Digital Experience Today</p>
+          <!-- Trust Stats Strip -->
+          <div class="hero-stats-strip">
+            <div class="hero-stat-card">
+              <div class="stat-val">50<span>+</span></div>
+              <div class="stat-desc">Products Shipped</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="stat-val">$150M<span>+</span></div>
+              <div class="stat-desc">Client Funding</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="stat-val">99.9<span>%</span></div>
+              <div class="stat-desc">Uptime &amp; SLA</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="stat-val">4.9<span>/5</span></div>
+              <div class="stat-desc">Satisfaction</div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Trust Stats -->
-      <div class="hero-stats">
-        <div class="stat-box">
-          <div class="stat-val">50<span>+</span></div>
-          <div class="stat-desc">Products Shipped</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-val">$150M<span>+</span></div>
-          <div class="stat-desc">Client Funding Raised</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-val">99.9<span>%</span></div>
-          <div class="stat-desc">Uptime &amp; Reliability</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-val">4.9<span>/5</span></div>
-          <div class="stat-desc">Client Satisfaction</div>
-        </div>
-      </div>
+        <!-- Right Column: Interactive Live Studio Terminal & Architecture Canvas -->
+        <div class="hero-terminal-stage">
+          <!-- Floating Telemetry Chips taking advantage of screen width -->
+          <div class="floating-tech-chip chip-top-right">
+            <span class="chip-icon">⚡</span>
+            <div class="chip-info">
+              <span class="chip-title">&lt;50ms Global P99</span>
+              <span class="chip-sub">Edge Cache &amp; Microservices</span>
+            </div>
+          </div>
 
+          <div class="floating-tech-chip chip-bottom-left">
+            <span class="chip-icon">🛡️</span>
+            <div class="chip-info">
+              <span class="chip-title">SOC-2 Type II Ready</span>
+              <span class="chip-sub">Zero-Trust Cloud Architecture</span>
+            </div>
+          </div>
+
+          <!-- Glass Terminal Window -->
+          <div class="terminal-window">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot-red"></span>
+                <span class="dot-yellow"></span>
+                <span class="dot-green"></span>
+              </div>
+              <div class="terminal-tabs" role="tablist">
+                <button class="terminal-tab active" data-pane="arch">Architecture.ts</button>
+                <button class="terminal-tab" data-pane="telemetry">LiveTelemetry.log</button>
+                <button class="terminal-tab" data-pane="stack">Stack.json</button>
+              </div>
+              <div class="terminal-status-badge">
+                <span class="pulse-green"></span> Live 24ms
+              </div>
+            </div>
+
+            <div class="terminal-body">
+              <!-- Tab 1: Architecture Code -->
+              <div class="terminal-pane active" id="pane-arch">
+                <span class="t-comment">// Techxodia Production Architecture Engine</span><br>
+                <span class="t-kw">import</span> { <span class="t-type">NextApp</span>, <span class="t-type">AIEngine</span>, <span class="t-type">PostgresEdge</span> } <span class="t-kw">from</span> <span class="t-str">'@techxodia/core'</span>;<br><br>
+                <span class="t-kw">export const</span> <span class="t-fn">buildDigitalProduct</span> = <span class="t-kw">async</span> (<span class="t-prop">client</span>: <span class="t-type">AmbitiousBrand</span>) =&gt; {<br>
+                &nbsp;&nbsp;<span class="t-kw">const</span> <span class="t-prop">pipeline</span> = <span class="t-kw">new</span> <span class="t-fn">HighPerformanceStack</span>({<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-prop">latencyTarget</span>: <span class="t-str">'&lt; 50ms'</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-prop">scalability</span>: <span class="t-num">10_000_000</span>, <span class="t-comment">// Daily Active Users</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-prop">intelligentAgents</span>: <span class="t-kw">true</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-prop">securityAudit</span>: <span class="t-str">'A+ Grade Zero-Trust'</span><br>
+                &nbsp;&nbsp;});<br><br>
+                &nbsp;&nbsp;<span class="t-kw">return await</span> <span class="t-prop">pipeline</span>.<span class="t-fn">deployToEdge</span>({ <span class="t-prop">sla</span>: <span class="t-num">0.9999</span> });<br>
+                };
+              </div>
+
+              <!-- Tab 2: Live Telemetry Stream -->
+              <div class="terminal-pane" id="pane-telemetry">
+                <span class="t-comment">[SYSTEM STATUS: NORMAL | REGION: GLOBAL EDGE]</span><br>
+                <span class="t-str">[19:42:01.104]</span> <span class="t-fn">GET</span> /api/v2/products &rarr; <span class="t-num">200 OK</span> <span class="t-accent">(18ms)</span><br>
+                <span class="t-str">[19:42:01.218]</span> <span class="t-fn">CACHE_HIT</span>: Cloudflare Edge Worker &bull; 99.4% hit-rate<br>
+                <span class="t-str">[19:42:01.350]</span> <span class="t-kw">AI_AGENT</span>: Vector Context Retrieval Completed <span class="t-accent">(32ms)</span><br>
+                <span class="t-str">[19:42:01.492]</span> <span class="t-fn">DB_CLUSTER</span>: Postgres Read-Replica Healthy &bull; 0.04% CPU<br>
+                <span class="t-str">[19:42:01.620]</span> <span class="t-type">HEALTHCHECK</span>: 54 Global PoPs active &bull; <span class="t-num">Zero Errors</span>
+              </div>
+
+              <!-- Tab 3: Tech Stack JSON -->
+              <div class="terminal-pane" id="pane-stack">
+                {<br>
+                &nbsp;&nbsp;<span class="t-prop">"studio"</span>: <span class="t-str">"Techxodia"</span>,<br>
+                &nbsp;&nbsp;<span class="t-prop">"tier"</span>: <span class="t-str">"Enterprise Engineering &amp; AI"</span>,<br>
+                &nbsp;&nbsp;<span class="t-prop">"frontend"</span>: [<span class="t-str">"Next.js 15"</span>, <span class="t-str">"TypeScript"</span>, <span class="t-str">"Tailwind"</span>],<br>
+                &nbsp;&nbsp;<span class="t-prop">"backend"</span>: [<span class="t-str">"Node.js"</span>, <span class="t-str">"Python/FastAPI"</span>, <span class="t-str">"PostgreSQL"</span>],<br>
+                &nbsp;&nbsp;<span class="t-prop">"cloud"</span>: [<span class="t-str">"AWS"</span>, <span class="t-str">"Vercel Edge"</span>, <span class="t-str">"Docker/K8s"</span>],<br>
+                &nbsp;&nbsp;<span class="t-prop">"ai_core"</span>: [<span class="t-str">"Autonomous Multi-Agent"</span>, <span class="t-str">"RAG"</span>]<br>
+                }
+              </div>
+            </div>
+
+            <!-- Terminal Footer Bar -->
+            <div class="terminal-footer-bar">
+              <div class="terminal-brand-emblem-wrap">
+                <img src="techxodia-emblem.png" alt="Techxodia Logo" class="terminal-emblem">
+                <div>
+                  <div class="terminal-brand-text">TECHXODIA SYSTEM CORE</div>
+                  <div class="terminal-brand-sub">Production Ready Architecture</div>
+                </div>
+              </div>
+              <button class="terminal-interactive-btn" id="terminal-sim-btn">
+                <span>⚡ Simulate Ping</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Edge-to-Edge Full-Screen Animated Infinite Tech Stack Marquee -->
+    <div class="tech-marquee-wrapper" aria-label="Technologies used by Techxodia">
+      <div class="marquee-track">
+        <div class="marquee-item"><span class="marquee-dot"></span> Next.js 15</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> TypeScript</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> React 19</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> Python &amp; FastAPI</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> PostgreSQL</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> Autonomous AI Agents</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> Docker &amp; Kubernetes</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> AWS Cloud</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> Supabase</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> Node.js Microservices</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> Redis In-Memory</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> GraphQL APIs</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> Vercel Edge Runtime</div>
+        <!-- Duplicate set for seamless looping -->
+        <div class="marquee-item"><span class="marquee-dot"></span> Next.js 15</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> TypeScript</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> React 19</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> Python &amp; FastAPI</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> PostgreSQL</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> Autonomous AI Agents</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> Docker &amp; Kubernetes</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> AWS Cloud</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> Supabase</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> Node.js Microservices</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> Redis In-Memory</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> GraphQL APIs</div>
+        <div class="marquee-item"><span class="marquee-dot"></span> Vercel Edge Runtime</div>
+      </div>
     </div>
   </section>
 
