@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Techxodia | Digital Product & Software Engineering Studio</title>
+  <meta name="description" content="Techxodia designs and builds high-performance web applications, mobile apps, and intelligent software for growing businesses and startups.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Animated Moving Warm Yellow / Golden Ambient Light Mesh -->
+  <div class="ambient-mesh-container" aria-hidden="true">
+    <div class="moving-light-orb orb-1"></div>
+    <div class="moving-light-orb orb-2"></div>
+    <div class="moving-light-orb orb-3"></div>
+    <div class="moving-light-orb orb-cursor" id="orb-cursor"></div>
+  </div>
+
+  <!-- ==========================================================================
+       Navigation Bar
+       ========================================================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <!-- Clean Official Techxodia Logo -->
+      <a href="#" class="brand-logo" aria-label="Techxodia Home">
+        <img src="techxodia-emblem.png" alt="Techxodia Emblem" class="brand-emblem">
+        <img src="techxodia-wordmark.png" alt="TECHXODIA" class="brand-wordmark">
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#work" class="nav-link">Work</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#process" class="nav-link">Process</a></li>
+          <li><a href="#estimator" class="nav-link">Pricing</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="nav-cta-wrapper">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span>Available for New Projects</span>
+        </div>
+        <a href="#contact" class="btn btn-primary btn-sm">Get in Touch</a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       Hero Section: Clean, Confident & Elegant
+       ========================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-container">
+      
+      <!-- Announcement Chip -->
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>Software Engineering &amp; AI Studio</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="hero-heading">
+        We build scalable web, mobile &amp; <br>
+        <span class="highlight-text">intelligent software</span> for ambitious brands.
+      </h1>
+
+      <p class="hero-subheading">
+        Techxodia partners with founders and engineering leaders to design, develop, and launch high-performance digital products that look great and drive real business revenue.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary btn-lg">
+          View Our Work
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="#estimator" class="btn btn-outline btn-lg">Estimate Your Project</a>
+      </div>
+
+      <!-- Logo & Showcase Banner Stage -->
+      <div class="hero-brand-stage">
+        <div class="brand-card">
+          <div class="brand-card-inner">
+            <div class="brand-showcase-visual">
+              <img src="techxodia-emblem.png" alt="Techxodia Icon" class="showcase-emblem">
+              <img src="techxodia-wordmark.png" alt="Techxodia Wordmark" class="showcase-wordmark">
+              <p class="showcase-tagline">Architecting Tomorrow's Digital Experience Today</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Stats -->
+      <div class="hero-stats">
+        <div class="stat-box">
+          <div class="stat-val">50<span>+</span></div>
+          <div class="stat-desc">Products Shipped</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">$150M<span>+</span></div>
+          <div class="stat-desc">Client Funding Raised</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">99.9<span>%</span></div>
+          <div class="stat-desc">Uptime &amp; Reliability</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">4.9<span>/5</span></div>
+          <div class="stat-desc">Client Satisfaction</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Services Section: What We Do
+       ========================================================================== -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="sub-title">What We Do</span>
+        <h2 class="section-title">End-to-end product development.</h2>
+        <p class="section-desc">
+          From first concept to production rollout, we handle architecture, UI/UX design, engineering, and scaling.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-card">
+          <div class="service-icon">💻</div>
+          <h3 class="service-title">Web Application Engineering</h3>
+          <p class="service-text">
+            Modern, lightning-fast web applications built with Next.js, React, Node, and TypeScript. Optimized for responsiveness, SEO, and enterprise security.
+          </p>
+          <ul class="service-list">
+            <li>SaaS platforms &amp; client portals</li>
+            <li>Real-time trading &amp; analytics dashboards</li>
+            <li>Modern e-commerce &amp; custom web tools</li>
+          </ul>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3 class="service-title">Mobile App Development</h3>
+          <p class="service-text">
+            Native and cross-platform mobile apps for iOS and Android that users love. Clean animations, biometric security, and offline support.
+          </p>
+          <ul class="service-list">
+            <li>iOS (Swift/SwiftUI) &amp; Android (Kotlin)</li>
+            <li>High-performance Flutter apps</li>
+            <li>App Store deployment &amp; lifecycle care</li>
+          </ul>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card">
+          <div class="service-icon">🧠</div>
+          <h3 class="service-title">Applied AI &amp; Automation</h3>
+          <p class="service-text">
+            Practical AI integrations that actually solve problems. We build intelligent copilots, RAG knowledge search, and smart automated workflows.
+          </p>
+          <ul class="service-list">
+            <li>Custom LLM copilots &amp; internal assistants</li>
+            <li>Document processing &amp; semantic search</li>
+            <li>Automated business pipeline workflows</li>
+          </ul>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card">
+          <div class="service-icon">☁️</div>
+          <h3 class="service-title">Cloud Architecture &amp; DevOps</h3>
+          <p class="service-text">
+            Robust cloud infrastructure engineered on AWS and GCP. Scalable microservices, automated CI/CD pipelines, and bulletproof security.
+          </p>
+          <ul class="service-list">
+            <li>Zero-downtime CI/CD deployment pipelines</li>
+            <li>Serverless &amp; containerized deployments</li>
+            <li>SOC-2 &amp; HIPAA compliance architecture</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Portfolio Showcase Section: Real Projects
+       ========================================================================== -->
+  <section class="work-section" id="work">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="sub-title">Selected Work</span>
+        <h2 class="section-title">Products built with care &amp; precision.</h2>
+        <p class="section-desc">
+          Take a look at some of the digital platforms and applications we have designed and shipped for our clients.
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="web">Web Platforms</button>
+        <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+        <button class="filter-btn" data-filter="ai">AI Solutions</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid">
+        
+        <!-- Project 1: Krypton -->
+        <div class="project-card" data-category="web">
+          <div class="project-preview preview-fintech">
+            <div class="mockup-screen">
+              <div class="mockup-header">
+                <div class="dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+                <div class="url">app.kryptoncapital.com/terminal</div>
+              </div>
+              <div class="mockup-content">
+                <div class="mockup-stats-row">
+                  <div>
+                    <div class="m-label">Portfolio Balance</div>
+                    <div class="m-val">$1,842,500.00</div>
+                  </div>
+                  <span class="m-badge badge-green">+14.2%</span>
+                </div>
+                <div class="mockup-bars">
+                  <div class="m-bar" style="height:35%"></div>
+                  <div class="m-bar" style="height:60%"></div>
+                  <div class="m-bar" style="height:45%"></div>
+                  <div class="m-bar active" style="height:90%"></div>
+                  <div class="m-bar active" style="height:100%"></div>
+                  <div class="m-bar" style="height:70%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Fintech Platform</span>
+            <h3 class="project-title">Krypton Capital Trading Terminal</h3>
+            <p class="project-summary">
+              An institutional investment web platform featuring real-time market data streaming, algorithmic execution, and automated portfolio rebalancing.
+            </p>
+            <div class="tech-stack">
+              <span>React 19</span>
+              <span>TypeScript</span>
+              <span>WebSockets</span>
+              <span>Node.js</span>
+            </div>
+            <button class="case-study-btn" data-modal="krypton">View Case Study →</button>
+          </div>
+        </div>
+
+        <!-- Project 2: OmniHealth -->
+        <div class="project-card" data-category="web">
+          <div class="project-preview preview-health">
+            <div class="mockup-screen">
+              <div class="mockup-header">
+                <div class="dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+                <div class="url">portal.omnihealth.io/dashboard</div>
+              </div>
+              <div class="mockup-content">
+                <div class="mockup-stats-row">
+                  <div>
+                    <div class="m-label">Active Telehealth Visits</div>
+                    <div class="m-val">24 Patients Live</div>
+                  </div>
+                  <span class="m-badge badge-blue">HIPAA Secure</span>
+                </div>
+                <div class="mockup-note">
+                  "AI transcription active: Clinical summary generated with 99.4% accuracy."
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Healthcare &amp; EHR</span>
+            <h3 class="project-title">OmniHealth Telehealth Portal</h3>
+            <p class="project-summary">
+              A HIPAA-compliant clinical care platform connecting doctors and patients with low-latency video, electronic health record sync, and automated charting.
+            </p>
+            <div class="tech-stack">
+              <span>Next.js</span>
+              <span>WebRTC</span>
+              <span>FastAPI</span>
+              <span>PostgreSQL</span>
+            </div>
+            <button class="case-study-btn" data-modal="omnihealth">View Case Study →</button>
+          </div>
+        </div>
+
+        <!-- Project 3: VaultX Mobile -->
+        <div class="project-card" data-category="mobile">
+          <div class="project-preview preview-mobile">
+            <div class="phone-mockup">
+              <div class="p-notch"></div>
+              <div class="p-body">
+                <div class="p-header">VaultX Banking</div>
+                <div class="p-bal-box">
+                  <span class="p-muted">Savings Vault</span>
+                  <div class="p-amount">$48,290.00</div>
+                  <span class="p-pill">Biometrics Active</span>
+                </div>
+                <div class="p-tx">
+                  <span>Direct Deposit</span>
+                  <strong>+$4,500.00</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Mobile Application</span>
+            <h3 class="project-title">VaultX NeoBank iOS &amp; Android</h3>
+            <p class="project-summary">
+              A sleek modern banking app featuring instant peer-to-peer transfers, virtual card generation, and Secure Enclave biometric authorization.
+            </p>
+            <div class="tech-stack">
+              <span>Swift / SwiftUI</span>
+              <span>Kotlin</span>
+              <span>gRPC</span>
+              <span>AWS</span>
+            </div>
+            <button class="case-study-btn" data-modal="vaultx">View Case Study →</button>
+          </div>
+        </div>
+
+        <!-- Project 4: Aura Spatial -->
+        <div class="project-card" data-category="ai">
+          <div class="project-preview preview-spatial">
+            <div class="mockup-screen">
+              <div class="mockup-header">
+                <div class="dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+                <div class="url">studio.auraspatial.com/viewer</div>
+              </div>
+              <div class="mockup-content text-center">
+                <div style="font-size: 2.4rem; margin-top: 10px;">🛋️</div>
+                <div class="m-val" style="font-size: 1rem; margin-top: 6px;">3D Interactive Customizer</div>
+                <div class="m-label">WebGL Real-time Materials</div>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">3D &amp; Spatial Web</span>
+            <h3 class="project-title">Aura 3D Product Customizer</h3>
+            <p class="project-summary">
+              An interactive 3D web configurator for custom furniture design, allowing customers to customize fabrics and lighting in real time before checkout.
+            </p>
+            <div class="tech-stack">
+              <span>Three.js</span>
+              <span>WebGL</span>
+              <span>Shopify API</span>
+              <span>React</span>
+            </div>
+            <button class="case-study-btn" data-modal="aura">View Case Study →</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Our Simple 4-Step Process
+       ========================================================================== -->
+  <section class="process-section" id="process">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="sub-title">How We Work</span>
+        <h2 class="section-title">A transparent, reliable process.</h2>
+        <p class="section-desc">
+          No jargon, no endless delays. We build in fast iterative sprints with continuous communication.
+        </p>
+      </div>
+
+      <div class="process-steps">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3 class="step-title">Discovery &amp; Architecture</h3>
+          <p class="step-desc">
+            We review your vision, define technical scope, select the optimal tech stack, and design the system architecture.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3 class="step-title">UI/UX &amp; Prototyping</h3>
+          <p class="step-desc">
+            We craft clean, intuitive user interfaces in Figma, validate user flows, and turn wireframes into clickable prototypes.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3 class="step-title">Sprint Engineering</h3>
+          <p class="step-desc">
+            We build your product in rapid two-week sprints with test coverage, continuous staging deployments, and weekly demos.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <h3 class="step-title">Launch &amp; Scaling</h3>
+          <p class="step-desc">
+            We launch your platform to production, ensure zero downtime, set up automated monitoring, and support your growth.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Pricing & Project Estimator
+       ========================================================================== -->
+  <section class="estimator-section" id="estimator">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="sub-title">Budget Calculator</span>
+        <h2 class="section-title">Transparent project estimation.</h2>
+        <p class="section-desc">
+          Select your requirements below to get a rough idea of timelines and investment for your build.
+        </p>
+      </div>
+
+      <div class="estimator-box">
+        <div class="estimator-grid">
+          <div class="est-options">
+            
+            <!-- Scope 1 -->
+            <div class="est-row">
+              <label class="est-label">Platform Type</label>
+              <div class="est-chips" id="platform-chips">
+                <button type="button" class="chip active" data-cost="24000" data-weeks="6">Web Application</button>
+                <button type="button" class="chip" data-cost="28000" data-weeks="7">Mobile App (iOS/Android)</button>
+                <button type="button" class="chip" data-cost="42000" data-weeks="10">Web + Mobile</button>
+              </div>
+            </div>
+
+            <!-- Scope 2 -->
+            <div class="est-row">
+              <label class="est-label">AI &amp; Backend Capabilities</label>
+              <div class="est-chips" id="ai-chips">
+                <button type="button" class="chip active" data-cost="4000" data-weeks="1">Standard Backend</button>
+                <button type="button" class="chip" data-cost="12000" data-weeks="2">Custom AI &amp; Search</button>
+                <button type="button" class="chip" data-cost="20000" data-weeks="4">Autonomous AI Agent System</button>
+              </div>
+            </div>
+
+            <!-- Scope 3 -->
+            <div class="est-row">
+              <label class="est-label">Speed &amp; Pod Allocation</label>
+              <div class="est-chips" id="speed-chips">
+                <button type="button" class="chip active" data-mult="1.0">Standard Sprint</button>
+                <button type="button" class="chip" data-mult="1.25">Accelerated Sprint</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Total Card -->
+          <div class="est-result-card">
+            <div class="result-header">Estimated Project Scope</div>
+            
+            <div class="price-display">
+              <span class="price-label">Estimated Investment</span>
+              <div class="price-range" id="price-range-val">$28,000 – $34,000</div>
+              <div class="time-range" id="time-range-val">Typical Delivery: 7–9 Weeks</div>
+            </div>
+
+            <div class="result-details">
+              <div class="res-item">
+                <span>Selected Platform:</span>
+                <strong id="res-platform">Web Application</strong>
+              </div>
+              <div class="res-item">
+                <span>Intelligence Tier:</span>
+                <strong id="res-ai">Standard Backend</strong>
+              </div>
+              <div class="res-item">
+                <span>Team:</span>
+                <span>Product Lead + 2 Full-Stack Engineers</span>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="btn-prefill-inquiry" style="width:100%; margin-top:18px;">
+              Discuss This Project →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Contact Form Section
+       ========================================================================== -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-layout">
+        
+        <div class="contact-copy">
+          <span class="sub-title">Contact Us</span>
+          <h2 class="section-title">Ready to build something great?</h2>
+          <p class="section-desc" style="text-align: left; margin: 0 0 32px 0;">
+            Tell us about your product idea, target launch date, and requirements. An engineering architect will get back to you within 24 hours.
+          </p>
+
+          <div class="contact-card-info">
+            <div class="info-row">
+              <span class="info-icon">✉️</span>
+              <div>
+                <div class="info-title">Email Us Directly</div>
+                <a href="mailto:techxodia@gmail.com" class="info-val">techxodia@gmail.com</a>
+              </div>
+            </div>
+            <div class="info-row">
+              <span class="info-icon">🤝</span>
+              <div>
+                <div class="info-title">Confidentiality Guarantee</div>
+                <div class="info-sub">Mutual Non-Disclosure Agreement (NDA) executed upon request.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-box">
+          <form id="contact-form" class="clean-form">
+            <div class="form-grid-2">
+              <div class="form-field">
+                <label for="contact-name">Your Name *</label>
+                <input type="text" id="contact-name" class="input-text" placeholder="John Doe" required>
+              </div>
+              <div class="form-field">
+                <label for="contact-email">Work Email *</label>
+                <input type="email" id="contact-email" class="input-text" placeholder="john@company.com" required>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-field">
+                <label for="contact-company">Company Name</label>
+                <input type="text" id="contact-company" class="input-text" placeholder="Acme Inc.">
+              </div>
+              <div class="form-field">
+                <label for="contact-budget">Estimated Budget</label>
+                <select id="contact-budget" class="input-text">
+                  <option value="25k-50k">$25k – $50k</option>
+                  <option value="50k-100k" selected>$50k – $100k</option>
+                  <option value="100k+">$100k+</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-msg">Tell us about your project *</label>
+              <textarea id="contact-msg" class="input-text textarea" placeholder="What are you looking to build, and what is your desired timeline?" required></textarea>
+            </div>
+
+            <div class="checkbox-row">
+              <input type="checkbox" id="nda-toggle" checked>
+              <label for="nda-toggle">Execute mutual Non-Disclosure Agreement (NDA) first</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" id="submit-btn" style="width: 100%;">
+              Send Project Inquiry
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Case Study Detail Modal
+       ========================================================================== -->
+  <div class="modal-backdrop" id="case-study-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      <div id="modal-body-content"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Footer: Clean Brand Showcase
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-top">
+        <div class="footer-brand-side">
+          <a href="#" class="brand-logo footer-logo">
+            <img src="techxodia-emblem.png" alt="Techxodia Emblem" class="brand-emblem">
+            <img src="techxodia-wordmark.png" alt="TECHXODIA" class="brand-wordmark">
+          </a>
+          <p class="footer-tag">
+            High-performance web, mobile, and AI product engineering studio. Helping visionary companies build their digital future.
+          </p>
+        </div>
+
+        <div class="footer-nav-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#estimator">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:techxodia@gmail.com">techxodia@gmail.com</a></li>
+            <li><a href="#contact">Schedule a Call</a></li>
+            <li><span>Available for Q4/Q1</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Techxodia Technologies Inc. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
