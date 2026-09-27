@@ -366,22 +366,192 @@ function initContactForm() {
 /* ==========================================================================
    7. Hero Interactive Spotlight Image (media_1790167990411.png)
    ========================================================================== */
+/* ==========================================================================
+   7. Hero Interactive 3D Brand Logo Stage (media_1790167990411.png)
+   ========================================================================== */
 function initHeroBrandStage() {
-  const heroImg = document.querySelector('.hero-spotlight-image');
-  const stage = document.querySelector('.hero-image-stage');
+  const stage = document.getElementById('hero-logo-stage');
+  const wrapper = document.getElementById('logo-3d-wrapper');
+  const heroImg = document.getElementById('hero-spotlight-image');
+  const glare = document.getElementById('logo-3d-glare');
+  const shockwave = document.getElementById('logo-shockwave');
+  const glowBackdrop = document.getElementById('hero-glow-backdrop');
+  const hintChip = document.querySelector('.interaction-hint-chip');
 
-  if (heroImg && stage) {
-    stage.addEventListener('mousemove', (e) => {
-      const rect = stage.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      const tiltX = (y / rect.height) * -8;
-      const tiltY = (x / rect.width) * 8;
-      heroImg.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale(1.04)`;
-    });
+  if (!stage || !wrapper || !heroImg) return;
 
-    stage.addEventListener('mouseleave', () => {
-      heroImg.style.transform = '';
-    });
+  // Set initial idle floating state
+  wrapper.classList.add('idle-floating');
+
+  let isHovered = false;
+  let isSpinning = false;
+  let targetRotX = 0;
+  let targetRotY = 0;
+  let currentRotX = 0;
+  let currentRotY = 0;
+  let targetScale = 1;
+  let currentScale = 1;
+  let glareOpacity = 0;
+  let currentGlareOpacity = 0;
+  let lightX = 50;
+  let lightY = 50;
+  let currentLightX = 50;
+  let currentLightY = 50;
+
+  // Smooth 60fps physics render loop
+  function update3DPhysics() {
+    if (!isSpinning) {
+      if (isHovered) {
+        // Interpolate rotation angles towards target
+        currentRotX += (targetRotX - currentRotX) * 0.1;
+        currentRotY += (targetRotY - currentRotY) * 0.1;
+        currentScale += (targetScale - currentScale) * 0.1;
+        currentGlareOpacity += (glareOpacity - currentGlareOpacity) * 0.15;
+        currentLightX += (lightX - currentLightX) * 0.12;
+        currentLightY += (lightY - currentLightY) * 0.12;
+
+        wrapper.style.transform = `perspective(1200px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale(${currentScale.toFixed(3)})`;
+
+        if (glare) {
+          glare.style.opacity = currentGlareOpacity.toFixed(2);
+          glare.style.background = `radial-gradient(circle at ${currentLightX.toFixed(1)}% ${currentLightY.toFixed(1)}%, rgba(255, 235, 175, 0.42) 0%, rgba(245, 158, 11, 0.18) 32%, transparent 68%)`;
+        }
+
+        // Parallax background glow opposite to tilt
+        if (glowBackdrop) {
+          const glowX = -currentRotY * 1.8;
+          const glowY = currentRotX * 1.8;
+          glowBackdrop.style.transform = `translate(calc(-50% + ${glowX.toFixed(1)}px), calc(-50% + ${glowY.toFixed(1)}px)) scale(1.12)`;
+        }
+      } else {
+        // Return backdrop glow to center
+        if (glowBackdrop && !glowBackdrop.style.transform.includes('-50%, -50%')) {
+          glowBackdrop.style.transform = `translate(-50%, -50%)`;
+        }
+      }
+    }
+
+    requestAnimationFrame(update3DPhysics);
+  }
+
+  requestAnimationFrame(update3DPhysics);
+
+  // Mouse Move over stage calculates 3D normal vector
+  function handlePointerMove(clientX, clientY) {
+    if (isSpinning) return;
+    const rect = stage.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+
+    // Normalize from -1 to 1 across stage
+    const normX = Math.max(-1, Math.min(1, ((x / rect.width) - 0.5) * 2));
+    const normY = Math.max(-1, Math.min(1, ((y / rect.height) - 0.5) * 2));
+
+    // Calculate 3D tilt (rotateX inverted for natural surface tilt)
+    targetRotX = -normY * 20;
+    targetRotY = normX * 22;
+    targetScale = 1.05;
+    glareOpacity = 0.85;
+
+    // Light source moves with cursor
+    lightX = ((normX + 1) / 2) * 100;
+    lightY = ((normY + 1) / 2) * 100;
+  }
+
+  stage.addEventListener('mousemove', (e) => {
+    if (!isHovered) {
+      isHovered = true;
+      wrapper.classList.remove('idle-floating');
+      wrapper.classList.add('is-tracking');
+    }
+    handlePointerMove(e.clientX, e.clientY);
+  });
+
+  stage.addEventListener('mouseenter', () => {
+    isHovered = true;
+    wrapper.classList.remove('idle-floating');
+    wrapper.classList.add('is-tracking');
+  });
+
+  stage.addEventListener('mouseleave', () => {
+    isHovered = false;
+    wrapper.classList.remove('is-tracking');
+    targetRotX = 0;
+    targetRotY = 0;
+    targetScale = 1;
+    glareOpacity = 0;
+
+    // Reset inline transform smoothly before restoring idle orbit
+    setTimeout(() => {
+      if (!isHovered && !isSpinning) {
+        wrapper.style.transform = '';
+        wrapper.classList.add('idle-floating');
+      }
+    }, 280);
+  });
+
+  // Touch support for mobile devices
+  stage.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches[0]) {
+      if (!isHovered) {
+        isHovered = true;
+        wrapper.classList.remove('idle-floating');
+        wrapper.classList.add('is-tracking');
+      }
+      handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+
+  stage.addEventListener('touchend', () => {
+    isHovered = false;
+    wrapper.classList.remove('is-tracking');
+    targetRotX = 0;
+    targetRotY = 0;
+    targetScale = 1;
+    glareOpacity = 0;
+    setTimeout(() => {
+      if (!isHovered && !isSpinning) {
+        wrapper.style.transform = '';
+        wrapper.classList.add('idle-floating');
+      }
+    }, 300);
+  });
+
+  // 3D Spin Action on Click
+  function trigger3DSpin() {
+    if (isSpinning) return;
+    isSpinning = true;
+    wrapper.classList.remove('idle-floating');
+    wrapper.classList.remove('is-tracking');
+
+    // Trigger shockwave
+    if (shockwave) {
+      shockwave.classList.remove('active');
+      void shockwave.offsetWidth; // Force reflow
+      shockwave.classList.add('active');
+    }
+
+    // Intensify hero image glow during spin
+    heroImg.style.filter = 'drop-shadow(0 25px 45px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 65px rgba(245, 158, 11, 0.75))';
+
+    wrapper.classList.add('spinning-3d');
+
+    setTimeout(() => {
+      wrapper.classList.remove('spinning-3d');
+      heroImg.style.filter = '';
+      isSpinning = false;
+
+      if (!isHovered) {
+        wrapper.classList.add('idle-floating');
+      } else {
+        wrapper.style.transform = `perspective(1200px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale(${currentScale.toFixed(3)})`;
+      }
+    }, 1250);
+  }
+
+  wrapper.addEventListener('click', trigger3DSpin);
+
+  if (hintChip) {
+    hintChip.addEventListener('click', trigger3DSpin);
   }
 }
