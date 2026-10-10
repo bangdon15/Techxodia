@@ -282,19 +282,21 @@ function initCaseStudyModal() {
       if (!data || !modal || !bodyContent) return;
 
       bodyContent.innerHTML = `
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
-          <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--primary); letter-spacing: 0.05em;">
-            ${data.tag}
+        <div class="modal-header-block" style="padding-right: 44px; margin-bottom: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
+            <div style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--primary); letter-spacing: 0.05em;">
+              ${data.tag}
+            </div>
+            ${data.liveUrl ? `
+              <a href="${data.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn-live-site" style="font-size: 0.78rem; padding: 4px 10px;">
+                <span>${data.liveUrl.includes('github.com') ? 'View on GitHub' : 'Launch Live Site'}</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            ` : ''}
           </div>
-          ${data.liveUrl ? `
-            <a href="${data.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn-live-site" style="font-size: 0.78rem; padding: 4px 10px;">
-              <span>${data.liveUrl.includes('github.com') ? 'View on GitHub' : 'Launch Live Site'}</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
-          ` : ''}
+          <h3 class="modal-project-title">${data.title}</h3>
+          <p class="modal-project-client">Client: ${data.client}</p>
         </div>
-        <h3 style="font-size: 1.5rem; margin-bottom: 6px; color: #FFF;">${data.title}</h3>
-        <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 16px;">Client: ${data.client}</p>
 
         ${data.screens && data.screens.length > 0 ? `
           <div class="modal-gallery-showcase">
@@ -317,9 +319,9 @@ function initCaseStudyModal() {
                 <p class="gallery-screen-desc" id="gallery-active-desc">${data.screens[0].details}</p>
                 
                 <div class="gallery-nav-controls">
-                  <button class="gallery-nav-btn prev" id="gallery-prev-btn">← Previous Screen</button>
+                  <button class="gallery-nav-btn prev" id="gallery-prev-btn">← Prev</button>
                   <span class="gallery-counter" id="gallery-counter">1 of ${data.screens.length}</span>
-                  <button class="gallery-nav-btn next" id="gallery-next-btn">Next Screen →</button>
+                  <button class="gallery-nav-btn next" id="gallery-next-btn">Next →</button>
                 </div>
               </div>
             </div>
