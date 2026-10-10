@@ -148,15 +148,15 @@ function initCaseStudyModal() {
       tech: ['JavaScript ES6+', 'Availability Engine', 'LocalStorage State', 'Responsive UI', 'Vercel']
     },
     finpulse: {
-      tag: 'Android OS & Mobile Engineering',
+      tag: 'Android OS & Mobile Engineering Showcase',
       title: 'FinPulse — Android Personal Finance Tracker',
-      client: 'Open Source / Mobile Engineering Lab',
-      liveUrl: 'https://github.com/bangdon15/FinPulse',
-      challenge: 'Personal finance apps often compromise between aesthetic vibrance and privacy, either relying on clunky unencrypted local databases, fragile state management, or slow web wrappers that compromise native Android touch fluency.',
-      solution: 'Engineered a modern, native Android application using Jetpack Compose, Material 3, and Clean Architecture (MVVM with State-Event pattern). Hardened user privacy using encrypted Room persistence with SQLCipher and Biometric API authentication, paired with dynamic Vico charts in a custom Terracotta Sun aesthetic.',
+      client: 'Mobile Engineering & FinTech Lab',
+      image: 'finpulse.png',
+      challenge: 'Personal finance apps often compromise between aesthetic vibrance and security, either relying on clunky unencrypted local databases, fragile state management, or slow web wrappers that compromise native Android touch fluency.',
+      solution: 'Engineered a modern, native Android application using Jetpack Compose, Material 3, and Clean Architecture (MVVM with State-Event pattern). Hardened user privacy using encrypted Room persistence with SQLCipher and Biometric API authentication, paired with dynamic Vico charts in an authentic Terracotta Sun design system.',
       impact: [
-        '100% declarative UI built with Jetpack Compose & Material 3',
-        'Hardware-accelerated database encryption with SQLCipher for Room',
+        '100% declarative UI built with Jetpack Compose & Material 3 in a custom Terracotta Sun theme',
+        'Hardware-accelerated database encryption with SQLCipher for Room persistence',
         'Biometric fingerprint & facial recognition lock for sensitive ledgers',
         'Interactive multi-year transaction tracking & dynamic Vico spending charts',
         'Receipt photo attachment pipeline with ML Kit parsing foundation'
@@ -236,7 +236,13 @@ function initCaseStudyModal() {
           ` : ''}
         </div>
         <h3 style="font-size: 1.5rem; margin-bottom: 6px; color: #FFF;">${data.title}</h3>
-        <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 20px;">Client: ${data.client}</p>
+        <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 16px;">Client: ${data.client}</p>
+
+        ${data.image ? `
+          <div style="margin-bottom: 22px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(226, 114, 91, 0.35); box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 24px rgba(226, 114, 91, 0.15); background: #07090E;">
+            <img src="${data.image}" alt="${data.title}" style="width: 100%; height: auto; max-height: 480px; object-fit: contain; display: block; margin: 0 auto;">
+          </div>
+        ` : ''}
 
         <div style="margin-bottom: 18px;">
           <h4 style="font-size: 0.95rem; color: var(--primary); margin-bottom: 6px;">The Challenge</h4>
