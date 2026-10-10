@@ -147,6 +147,22 @@ function initCaseStudyModal() {
       ],
       tech: ['JavaScript ES6+', 'Availability Engine', 'LocalStorage State', 'Responsive UI', 'Vercel']
     },
+    finpulse: {
+      tag: 'Android OS & Mobile Engineering',
+      title: 'FinPulse — Android Personal Finance Tracker',
+      client: 'Open Source / Mobile Engineering Lab',
+      liveUrl: 'https://github.com/bangdon15/FinPulse',
+      challenge: 'Personal finance apps often compromise between aesthetic vibrance and privacy, either relying on clunky unencrypted local databases, fragile state management, or slow web wrappers that compromise native Android touch fluency.',
+      solution: 'Engineered a modern, native Android application using Jetpack Compose, Material 3, and Clean Architecture (MVVM with State-Event pattern). Hardened user privacy using encrypted Room persistence with SQLCipher and Biometric API authentication, paired with dynamic Vico charts in a custom Terracotta Sun aesthetic.',
+      impact: [
+        '100% declarative UI built with Jetpack Compose & Material 3',
+        'Hardware-accelerated database encryption with SQLCipher for Room',
+        'Biometric fingerprint & facial recognition lock for sensitive ledgers',
+        'Interactive multi-year transaction tracking & dynamic Vico spending charts',
+        'Receipt photo attachment pipeline with ML Kit parsing foundation'
+      ],
+      tech: ['Kotlin', 'Jetpack Compose', 'Material 3', 'Clean Architecture (MVVM)', 'Hilt DI', 'Room (SQLCipher)', 'Biometric API', 'Vico Charts', 'Coroutines & Flow']
+    },
     krypton: {
       tag: 'Fintech Platform',
       title: 'Krypton Capital Trading Terminal',
@@ -214,7 +230,7 @@ function initCaseStudyModal() {
           </div>
           ${data.liveUrl ? `
             <a href="${data.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn-live-site" style="font-size: 0.78rem; padding: 4px 10px;">
-              <span>Launch Live Site</span>
+              <span>${data.liveUrl.includes('github.com') ? 'View on GitHub' : 'Launch Live Site'}</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
           ` : ''}

@@ -1084,6 +1084,10 @@ h1, h2, h3, h4 {
   background: radial-gradient(circle at 50% 20%, #1A150F 0%, #0D0B08 100%);
 }
 
+.preview-finpulse {
+  background: radial-gradient(circle at 50% 20%, #24140D 0%, #0A0807 100%);
+}
+
 .mockup-link-wrap {
   display: block;
   width: 100%;
@@ -1111,6 +1115,10 @@ h1, h2, h3, h4 {
   border-color: rgba(212, 163, 75, 0.25);
 }
 
+.finpulse-screen {
+  border-color: rgba(226, 91, 56, 0.28);
+}
+
 .project-card:hover .valence-screen {
   border-color: rgba(207, 184, 157, 0.55);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(207, 184, 157, 0.15);
@@ -1119,6 +1127,33 @@ h1, h2, h3, h4 {
 .project-card:hover .casitas-screen {
   border-color: rgba(212, 163, 75, 0.6);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 163, 75, 0.18);
+}
+
+.project-card:hover .finpulse-screen {
+  border-color: rgba(226, 91, 56, 0.65);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 24px rgba(226, 91, 56, 0.22);
+}
+
+.mockup-status-android {
+  background: rgba(226, 91, 56, 0.15);
+  border-color: rgba(226, 91, 56, 0.35);
+  color: #FF8A65;
+}
+
+.mockup-status-android .pulse-dot {
+  background: #FF8A65;
+  box-shadow: 0 0 6px #FF8A65;
+}
+
+.badge-android {
+  color: #38BDF8;
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+.badge-android .dot-green {
+  background: #38BDF8;
+  box-shadow: 0 0 6px #38BDF8;
 }
 
 .mockup-image-frame {
