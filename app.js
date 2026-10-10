@@ -152,6 +152,64 @@ function initCaseStudyModal() {
       title: 'FinPulse — Android Personal Finance Tracker',
       client: 'Mobile Engineering & FinTech Lab',
       image: 'finpulse.png',
+      screens: [
+        {
+          id: 'dashboard',
+          name: 'Core Dashboard & Balance',
+          tag: 'Core UI • Balance Tracking',
+          img: 'finpulse/1.PNG',
+          highlight: 'Live ₱37,942.11 balance on signature Terracotta Sun card, quick salary ingestion, and disposable cash vs credit liability computation.',
+          details: 'The central command deck for personal finance. Crafted using 100% Jetpack Compose with custom elevation and a radiant Tropical Turquoise (#40E0D0) surface contrasted with warm Terracotta Sun (#E2725B) accents. Automatically deducts credit liabilities to show real spendable cash.'
+        },
+        {
+          id: 'weekly',
+          name: 'Weekly Telemetry & Receipts',
+          tag: 'Vico Engine • Spending Trends',
+          img: 'finpulse/2.PNG',
+          highlight: '7-day rolling spending telemetry powered by the Vico charting engine with categorized merchant transactions and inline photo receipts.',
+          details: 'Displays weekly transaction velocity with dynamic bar columns. The bottom feed parses transactions with dedicated category icons (Food, Utilities, Gaming) and embeds thumbnail previews for transactions with attached photo proofs.'
+        },
+        {
+          id: 'monthly',
+          name: 'Monthly Analytics & Receipts',
+          tag: 'Ledger Audit • Photo Gallery',
+          img: 'finpulse/3.PNG',
+          highlight: 'August 2026 Monthly Breakdown aggregating Income (₱50,000), Expenses (₱12,557), Net (₱37,442), and visual Transaction Gallery.',
+          details: 'Comprehensive month-level financial health analysis. Organizes cashflow into Salary, Expense, and Credit, with an interactive visual Transaction Gallery displaying receipt proof images for frictionless bookkeeping.'
+        },
+        {
+          id: 'fiscalyear',
+          name: 'Fiscal Year Time Engine',
+          tag: 'Time Navigation • Fiscal Years',
+          img: 'finpulse/4.PNG',
+          highlight: 'Material 3 bottom-sheet selector allowing instantaneous time travel across fiscal years (2025, 2026, 2027) with active Golden Saffron indicator.',
+          details: 'Designed for deep historical audits and multi-year projection. Users can switch fiscal calendar periods in a single tap without re-querying the database, leveraging Room reactive Flow state caching.'
+        },
+        {
+          id: 'monthpicker',
+          name: 'Month & Period Selector',
+          tag: 'Material 3 • Time Engine',
+          img: 'finpulse/5.PNG',
+          highlight: 'Dynamic month-level bottom sheet with Golden Saffron (#F4C430) active pills for immediate period filtering.',
+          details: 'A clean, accessible Material 3 bottom-sheet with Golden Saffron (#F4C430) active pills. Allows users to inspect and audit past months or project upcoming financial liabilities effortlessly.'
+        },
+        {
+          id: 'entry',
+          name: 'Expense Entry & Camera Capture',
+          tag: 'Transaction Flow • Receipt OCR Hook',
+          img: 'finpulse/6.PNG',
+          highlight: 'Log purchases with category icons, installment tracking toggles, and direct camera/gallery receipt attachment ready for ML Kit.',
+          details: 'Fast, frictionless purchase creation workflow. Supports merchant name, currency amount, custom category icons, Credit Card / Installment flags, and a direct photo capture hook ready for ML Kit OCR text recognition.'
+        },
+        {
+          id: 'liquidity',
+          name: 'Liquidity & Debt Calculation',
+          tag: 'Financial Health • Debt Ratio',
+          img: 'finpulse/Capture.PNG',
+          highlight: 'High-definition financial wellness overview computing total disposable liquidity, debt-to-income cushion, and scheduled bill obligations.',
+          details: 'Provides the user with immediate clarity on spendable cash reserves after earmarking funds for upcoming credit card statements, ensuring zero surprise overdrafts or interest penalties.'
+        }
+      ],
       challenge: 'Personal finance apps often compromise between aesthetic vibrance and security, either relying on clunky unencrypted local databases, fragile state management, or slow web wrappers that compromise native Android touch fluency.',
       solution: 'Engineered a modern, native Android application using Jetpack Compose, Material 3, and Clean Architecture (MVVM with State-Event pattern). Hardened user privacy using encrypted Room persistence with SQLCipher and Biometric API authentication, paired with dynamic Vico charts in an authentic Terracotta Sun design system.',
       impact: [
@@ -238,7 +296,45 @@ function initCaseStudyModal() {
         <h3 style="font-size: 1.5rem; margin-bottom: 6px; color: #FFF;">${data.title}</h3>
         <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 16px;">Client: ${data.client}</p>
 
-        ${data.image ? `
+        ${data.screens && data.screens.length > 0 ? `
+          <div class="modal-gallery-showcase">
+            <div class="gallery-tabs-row">
+              ${data.screens.map((s, idx) => `
+                <button class="gallery-tab-btn ${idx === 0 ? 'active' : ''}" data-screen-idx="${idx}">
+                  <span>${s.name}</span>
+                </button>
+              `).join('')}
+            </div>
+
+            <div class="gallery-display-stage">
+              <div class="gallery-phone-frame">
+                <img id="gallery-active-img" src="${data.screens[0].img}" alt="${data.screens[0].name}">
+              </div>
+              <div class="gallery-meta-panel">
+                <div class="gallery-badge" id="gallery-active-tag">${data.screens[0].tag}</div>
+                <h4 class="gallery-screen-title" id="gallery-active-title">${data.screens[0].name}</h4>
+                <div class="gallery-screen-highlight" id="gallery-active-highlight">${data.screens[0].highlight}</div>
+                <p class="gallery-screen-desc" id="gallery-active-desc">${data.screens[0].details}</p>
+                
+                <div class="gallery-nav-controls">
+                  <button class="gallery-nav-btn prev" id="gallery-prev-btn">← Previous Screen</button>
+                  <span class="gallery-counter" id="gallery-counter">1 of ${data.screens.length}</span>
+                  <button class="gallery-nav-btn next" id="gallery-next-btn">Next Screen →</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Thumbnail strip -->
+            <div class="gallery-thumbnails-strip">
+              ${data.screens.map((s, idx) => `
+                <div class="gallery-thumb-item ${idx === 0 ? 'active' : ''}" data-screen-idx="${idx}" title="${s.name}">
+                  <div class="thumb-img-wrap"><img src="${s.img}" alt="${s.name}"></div>
+                  <span class="thumb-label">${idx + 1}. ${s.name.split('&')[0]}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : data.image ? `
           <div style="margin-bottom: 22px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(226, 114, 91, 0.35); box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 24px rgba(226, 114, 91, 0.15); background: #07090E;">
             <img src="${data.image}" alt="${data.title}" style="width: 100%; height: auto; max-height: 480px; object-fit: contain; display: block; margin: 0 auto;">
           </div>
@@ -269,6 +365,74 @@ function initCaseStudyModal() {
         </div>
       `;
 
+      // Wire up interactive gallery controls if screens exist
+      if (data.screens && data.screens.length > 0) {
+        let currentScreenIndex = 0;
+        const screens = data.screens;
+
+        const updateScreenView = (idx) => {
+          currentScreenIndex = idx;
+          const s = screens[idx];
+          const imgEl = bodyContent.querySelector('#gallery-active-img');
+          const tagEl = bodyContent.querySelector('#gallery-active-tag');
+          const titleEl = bodyContent.querySelector('#gallery-active-title');
+          const highlightEl = bodyContent.querySelector('#gallery-active-highlight');
+          const descEl = bodyContent.querySelector('#gallery-active-desc');
+          const counterEl = bodyContent.querySelector('#gallery-counter');
+
+          if (imgEl) {
+            imgEl.style.opacity = '0';
+            setTimeout(() => {
+              imgEl.src = s.img;
+              imgEl.style.opacity = '1';
+            }, 150);
+          }
+          if (tagEl) tagEl.textContent = s.tag;
+          if (titleEl) titleEl.textContent = s.name;
+          if (highlightEl) highlightEl.textContent = s.highlight;
+          if (descEl) descEl.textContent = s.details;
+          if (counterEl) counterEl.textContent = `${idx + 1} of ${screens.length}`;
+
+          bodyContent.querySelectorAll('.gallery-tab-btn').forEach((tab, i) => {
+            tab.classList.toggle('active', i === idx);
+          });
+          bodyContent.querySelectorAll('.gallery-thumb-item').forEach((thumb, i) => {
+            thumb.classList.toggle('active', i === idx);
+          });
+        };
+
+        bodyContent.querySelectorAll('.gallery-tab-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const idx = parseInt(btn.dataset.screenIdx, 10);
+            updateScreenView(idx);
+          });
+        });
+
+        bodyContent.querySelectorAll('.gallery-thumb-item').forEach((thumb) => {
+          thumb.addEventListener('click', () => {
+            const idx = parseInt(thumb.dataset.screenIdx, 10);
+            updateScreenView(idx);
+          });
+        });
+
+        const prevBtn = bodyContent.querySelector('#gallery-prev-btn');
+        const nextBtn = bodyContent.querySelector('#gallery-next-btn');
+
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            const nextIdx = (currentScreenIndex - 1 + screens.length) % screens.length;
+            updateScreenView(nextIdx);
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            const nextIdx = (currentScreenIndex + 1) % screens.length;
+            updateScreenView(nextIdx);
+          });
+        }
+      }
+
       modal.classList.add('active');
     });
   });
@@ -277,6 +441,18 @@ function initCaseStudyModal() {
     closeBtn.addEventListener('click', () => modal.classList.remove('active'));
     modal.addEventListener('click', (e) => {
       if (e.target === modal) modal.classList.remove('active');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('active')) return;
+      if (e.key === 'Escape') {
+        modal.classList.remove('active');
+      } else if (e.key === 'ArrowLeft') {
+        const prevBtn = modal.querySelector('#gallery-prev-btn');
+        if (prevBtn) prevBtn.click();
+      } else if (e.key === 'ArrowRight') {
+        const nextBtn = modal.querySelector('#gallery-next-btn');
+        if (nextBtn) nextBtn.click();
+      }
     });
   }
 }

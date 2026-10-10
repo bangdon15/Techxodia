@@ -1169,6 +1169,16 @@ h1, h2, h3, h4 {
   background: #05070A;
 }
 
+.finpulse-image-frame {
+  height: 225px;
+  background: #0B0F17;
+}
+
+.finpulse-cover-img {
+  object-fit: cover;
+  object-position: center center;
+}
+
 .mockup-real-img {
   width: 100%;
   height: 100%;
@@ -1217,6 +1227,383 @@ h1, h2, h3, h4 {
   transform: translateY(0);
 }
 
+/* ==========================================================================
+   FinPulse Mini Pill Tags
+   ========================================================================== */
+.finpulse-screens-mini-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 14px 0;
+}
+
+.screen-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  color: #CBD5E1;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-terra {
+  background: #E2725B;
+  box-shadow: 0 0 6px #E2725B;
+}
+
+.dot-turq {
+  background: #40E0D0;
+  box-shadow: 0 0 6px #40E0D0;
+}
+
+.dot-saffron {
+  background: #F4C430;
+  box-shadow: 0 0 6px #F4C430;
+}
+
+/* ==========================================================================
+   Case Study Modal & Interactive Gallery Showcase
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  background: rgba(5, 8, 14, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-dialog {
+  background: #0E1420;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 50px rgba(226, 114, 91, 0.12);
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 32px;
+  position: relative;
+  transform: scale(0.95) translateY(16px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.modal-backdrop.active .modal-dialog {
+  transform: scale(1) translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #CBD5E1;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 20;
+}
+
+.modal-close:hover {
+  background: rgba(226, 114, 91, 0.2);
+  border-color: rgba(226, 114, 91, 0.6);
+  color: #FFF;
+  transform: rotate(90deg);
+}
+
+/* Modal Gallery Container */
+.modal-gallery-showcase {
+  margin: 18px 0 26px 0;
+  background: #070B12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Tabs Row */
+.gallery-tabs-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+}
+
+.gallery-tab-btn {
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: #94A3B8;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.gallery-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFF;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.gallery-tab-btn.active {
+  background: rgba(226, 114, 91, 0.16);
+  border-color: #E2725B;
+  color: #FFF;
+  box-shadow: 0 0 14px rgba(226, 114, 91, 0.28);
+}
+
+/* Stage: Phone + Meta */
+.gallery-display-stage {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  gap: 26px;
+  align-items: center;
+  background: radial-gradient(circle at 25% 45%, rgba(226, 114, 91, 0.09) 0%, rgba(64, 224, 208, 0.06) 45%, rgba(10, 15, 24, 0.5) 100%);
+  border-radius: 14px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Phone Mockup Frame */
+.gallery-phone-frame {
+  width: 240px;
+  margin: 0 auto;
+  background: #111723;
+  border: 2px solid rgba(64, 224, 208, 0.32);
+  border-radius: 28px;
+  padding: 8px 6px 14px 6px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75), 0 0 24px rgba(64, 224, 208, 0.18);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-phone-frame::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #080C13;
+  border-radius: 50%;
+  margin-bottom: 6px;
+}
+
+.gallery-phone-frame::after {
+  content: '';
+  width: 50px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+#gallery-active-img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  display: block;
+  object-fit: cover;
+  transition: opacity 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Meta Panel */
+.gallery-meta-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gallery-badge {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #40E0D0;
+  background: rgba(64, 224, 208, 0.12);
+  border: 1px solid rgba(64, 224, 208, 0.28);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.gallery-screen-title {
+  font-size: 1.35rem;
+  font-family: var(--font-heading);
+  color: #FFF;
+  font-weight: 700;
+}
+
+.gallery-screen-highlight {
+  font-size: 0.9rem;
+  color: #F8FAFC;
+  line-height: 1.5;
+  background: rgba(226, 114, 91, 0.12);
+  border-left: 3px solid #E2725B;
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+  font-weight: 500;
+}
+
+.gallery-screen-desc {
+  font-size: 0.88rem;
+  color: #94A3B8;
+  line-height: 1.6;
+}
+
+.gallery-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.gallery-nav-btn {
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: #FFF;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gallery-nav-btn:hover {
+  background: rgba(226, 114, 91, 0.2);
+  border-color: #E2725B;
+  color: #FFF;
+}
+
+.gallery-counter {
+  font-size: 0.8rem;
+  color: #64748B;
+  font-weight: 600;
+}
+
+/* Filmstrip Thumbnails */
+.gallery-thumbnails-strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px 2px 8px 2px;
+  scrollbar-width: thin;
+}
+
+.gallery-thumb-item {
+  flex: 0 0 86px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+}
+
+.gallery-thumb-item:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+
+.gallery-thumb-item.active {
+  opacity: 1;
+}
+
+.thumb-img-wrap {
+  width: 62px;
+  height: 104px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.gallery-thumb-item.active .thumb-img-wrap {
+  border-color: #E2725B;
+  box-shadow: 0 0 12px rgba(226, 114, 91, 0.45);
+}
+
+.thumb-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumb-label {
+  font-size: 0.68rem;
+  color: #94A3B8;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 84px;
+}
+
+.gallery-thumb-item.active .thumb-label {
+  color: #E2725B;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .gallery-display-stage {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .gallery-phone-frame {
+    width: 210px;
+  }
+  .modal-dialog {
+    padding: 22px 16px;
+  }
+}
 
 /* ==========================================================================
    Process Section
