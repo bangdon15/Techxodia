@@ -309,7 +309,63 @@
           </div>
         </div>
 
+        <!-- Featured Mobile Project: FinPulse Android -->
+        <div class="project-card featured-live-card" data-category="mobile android">
+          <div class="project-preview preview-finpulse">
+            <div class="mockup-link-wrap case-study-btn" data-modal="finpulse" role="button" tabindex="0" aria-label="View FinPulse App Showcase Screenshot" style="cursor: pointer;">
+              <div class="mockup-screen mockup-real-screen finpulse-screen">
+                <div class="mockup-header">
+                  <div class="dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+                  <div class="url">finpulse.android.app/showcase</div>
+                  <span class="mockup-live-status mockup-status-android"><span class="pulse-dot"></span>Android Native • 7 Screens</span>
+                </div>
+                <div class="mockup-image-frame finpulse-image-frame">
+                  <img src="finpulse.png" alt="FinPulse Android Personal Finance Tracker Theme Cover" class="mockup-real-img finpulse-cover-img">
+                  <div class="mockup-image-overlay">
+                    <span class="overlay-cta-pill">Explore All 7 Screens ↗</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-top-row">
+              <span class="project-tag">Android OS &amp; Jetpack Compose</span>
+              <span class="live-deploy-badge badge-android"><span class="dot-green"></span>App Showcase (7 Screens)</span>
+            </div>
+            <h3 class="project-title">FinPulse — Android Finance Tracker</h3>
+            <p class="project-summary">
+              A modern, secure Android personal finance application featuring Jetpack Compose declarative UI, encrypted Room storage with SQLCipher, biometric authentication, and interactive financial charts in an authentic Terracotta Sun aesthetic.
+            </p>
 
+            <!-- Mini screen pills for instant visual context -->
+            <div class="finpulse-screens-mini-strip">
+              <span class="screen-pill"><span class="pill-dot dot-terra"></span>Dashboard</span>
+              <span class="screen-pill"><span class="pill-dot dot-turq"></span>Vico Charts</span>
+              <span class="screen-pill"><span class="pill-dot dot-saffron"></span>Photo Receipts</span>
+              <span class="screen-pill"><span class="pill-dot dot-terra"></span>Fiscal Year</span>
+              <span class="screen-pill"><span class="pill-dot dot-turq"></span>M3 Calendar</span>
+              <span class="screen-pill"><span class="pill-dot dot-saffron"></span>Camera Ingest</span>
+              <span class="screen-pill"><span class="pill-dot dot-terra"></span>Debt Ratio</span>
+            </div>
+
+            <div class="tech-stack">
+              <span>Kotlin</span>
+              <span>Jetpack Compose</span>
+              <span>Material 3</span>
+              <span>Room + SQLCipher</span>
+              <span>Biometric API</span>
+              <span>Vico Charts</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn btn-primary btn-sm case-study-btn" data-modal="finpulse">
+                <span>Explore All 7 Screens</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
+              <button class="case-study-btn" data-modal="finpulse">Architecture &amp; Features →</button>
+            </div>
+          </div>
+        </div>
 
         <!-- Project 3: Krypton -->
         <div class="project-card" data-category="web">
@@ -676,22 +732,22 @@
             <div class="form-grid-2">
               <div class="form-field">
                 <label for="contact-name">Your Name *</label>
-                <input type="text" id="contact-name" class="input-text" placeholder="John Doe" required>
+                <input type="text" id="contact-name" name="name" class="input-text" placeholder="John Doe" required>
               </div>
               <div class="form-field">
                 <label for="contact-email">Work Email *</label>
-                <input type="email" id="contact-email" class="input-text" placeholder="john@company.com" required>
+                <input type="email" id="contact-email" name="email" class="input-text" placeholder="john@company.com" required>
               </div>
             </div>
 
             <div class="form-grid-2">
               <div class="form-field">
                 <label for="contact-company">Company Name</label>
-                <input type="text" id="contact-company" class="input-text" placeholder="Acme Inc.">
+                <input type="text" id="contact-company" name="company" class="input-text" placeholder="Acme Inc.">
               </div>
               <div class="form-field">
                 <label for="contact-budget">Target Budget (USD or PHP)</label>
-                <input type="text" id="contact-budget" class="input-text" placeholder="e.g. $5,000, ₱250k, or Flexible" list="budget-suggestions">
+                <input type="text" id="contact-budget" name="budget" class="input-text" placeholder="e.g. $5,000, ₱250k, or Flexible" list="budget-suggestions">
                 <datalist id="budget-suggestions">
                   <option value="$3,000 – $5,000 (Starter MVP)">
                   <option value="$5,000 – $15,000 (Core Build)">
@@ -705,11 +761,11 @@
 
             <div class="form-field">
               <label for="contact-msg">Tell us about your project *</label>
-              <textarea id="contact-msg" class="input-text textarea" placeholder="What are you looking to build, and what is your desired timeline?" required></textarea>
+              <textarea id="contact-msg" name="message" class="input-text textarea" placeholder="What are you looking to build, and what is your desired timeline?" required></textarea>
             </div>
 
             <div class="checkbox-row">
-              <input type="checkbox" id="nda-toggle" checked>
+              <input type="checkbox" id="nda-toggle" name="nda" checked>
               <label for="nda-toggle">Execute mutual Non-Disclosure Agreement (NDA) first</label>
             </div>
 
