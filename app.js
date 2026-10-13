@@ -466,7 +466,6 @@ function initEstimator() {
   const currencyToggleBtns = document.querySelectorAll('#currency-toggle .curr-btn');
   const currSymbol = document.getElementById('budget-curr-symbol');
   const budgetInput = document.getElementById('client-budget-input');
-  const presetChips = document.querySelectorAll('#budget-presets .preset-chip');
 
   const platformChips = document.querySelectorAll('#platform-chips .chip');
   const aiChips = document.querySelectorAll('#ai-chips .chip');
@@ -474,11 +473,10 @@ function initEstimator() {
 
   const priceRangeVal = document.getElementById('price-range-val');
   const scopeTierName = document.getElementById('scope-tier-name');
-  const timeRangeVal = document.getElementById('time-range-val');
-  const resPhase = document.getElementById('res-phase');
   const resPlatform = document.getElementById('res-platform');
   const resAi = document.getElementById('res-ai');
-  const resTeam = document.getElementById('res-team');
+  const resSpeed = document.getElementById('res-speed');
+  const resReview = document.getElementById('res-review');
   const statusPill = document.getElementById('budget-status-pill');
   const adviceText = document.getElementById('scope-advice-text');
 
@@ -495,95 +493,37 @@ function initEstimator() {
     const actSpeed = document.querySelector('#speed-chips .chip.active');
 
     const platformName = actPlatform?.dataset.platform || actPlatform?.textContent || 'Web Application';
-    const aiTier = actAi?.dataset.tier || 'Standard';
     const aiText = actAi?.textContent || 'Lean Core Backend (MVP)';
-    const speedPacing = actSpeed?.dataset.speed || 'Standard';
-
-    // Normalize budget to USD equivalent for matching logic (1 USD ≈ 56 PHP)
-    const usdEquiv = currentCurrency === 'PHP' ? (rawVal / 56) : rawVal;
+    const speedText = actSpeed?.textContent || 'Standard Sprint Pacing';
     const symbol = currentCurrency === 'PHP' ? '₱' : '$';
 
     if (priceRangeVal) {
       if (rawVal > 0) {
         priceRangeVal.textContent = `${symbol}${formatNumber(rawVal)} ${currentCurrency}`;
       } else {
-        priceRangeVal.textContent = `Specify Target Budget`;
+        priceRangeVal.textContent = `Specify Your Budget`;
       }
     }
 
     if (resPlatform) resPlatform.textContent = platformName;
     if (resAi) resAi.textContent = aiText;
-
-    // Determine scope tier, phasing, delivery, team pod, and advisory feedback
-    let tierTitle = 'Rapid Launch MVP';
-    let phaseTitle = 'Phase 1: High-Impact Core MVP';
-    let minWeeks = 2;
-    let maxWeeks = 4;
-    let teamPod = 'Product Lead + Full-Stack Engineer';
-    let isAligned = true;
-    let advice = 'Great fit for testing the market fast. We focus on core conversion flows and essential functionality.';
-
-    if (usdEquiv < 6000) {
-      tierTitle = 'Rapid Launch MVP';
-      phaseTitle = 'Phase 1: High-Impact Core MVP';
-      minWeeks = 2;
-      maxWeeks = 4;
-      teamPod = 'Senior Full-Stack Engineer';
-
-      if (platformName.includes('Web + Mobile') || aiTier === 'Autonomous Agents') {
-        isAligned = false;
-        advice = 'For a multi-platform or autonomous system with this budget, we recommend launching a high-impact Phase 1 Web MVP first, then rolling out mobile & agent pods in Phase 2 as revenue grows!';
-      } else {
-        advice = 'Cost-effective setup tailored for validation. Delivers a clean, responsive UI with reliable core backend architecture.';
-      }
-    } else if (usdEquiv >= 6000 && usdEquiv < 16000) {
-      tierTitle = 'Production Commercial Build';
-      phaseTitle = 'Version 1.0 Production Launch';
-      minWeeks = 4;
-      maxWeeks = 7;
-      teamPod = 'Product Lead + 2 Full-Stack Engineers';
-
-      if (aiTier === 'Autonomous Agents' && platformName.includes('Web + Mobile')) {
-        isAligned = false;
-        advice = 'Solid budget! We can deliver the complete web application with initial automations, followed by mobile apps in an agile follow-on sprint.';
-      } else {
-        advice = 'Healthy runway for a scalable, market-ready product with secure authentication, cloud database, and sleek custom animations.';
-      }
-    } else if (usdEquiv >= 16000 && usdEquiv < 32000) {
-      tierTitle = 'High-Growth Scale Platform';
-      phaseTitle = 'Multi-Platform + Intelligent Backend';
-      minWeeks = 6;
-      maxWeeks = 9;
-      teamPod = 'Product Lead + Senior Engineering Pod';
-      advice = 'Ideal runway for comprehensive multi-platform deployment (web + mobile), custom AI search, high-volume APIs, and automated CI/CD.';
-    } else {
-      tierTitle = 'Enterprise Autonomous System';
-      phaseTitle = 'Dedicated End-to-End Pod';
-      minWeeks = 8;
-      maxWeeks = 12;
-      teamPod = 'Dedicated Studio Pod (Lead, 3 Engineers, QA)';
-      advice = 'Full custom architecture with autonomous AI workflows, multi-platform ecosystem, high security compliance, and dedicated team availability.';
-    }
-
-    // Speed pacing adjustments
-    if (speedPacing === 'Accelerated') {
-      minWeeks = Math.max(1, Math.round(minWeeks * 0.75));
-      maxWeeks = Math.max(2, Math.round(maxWeeks * 0.75));
-    }
-
-    if (scopeTierName) scopeTierName.textContent = tierTitle;
-    if (timeRangeVal) timeRangeVal.textContent = `Estimated Delivery: ${minWeeks}–${maxWeeks} Weeks`;
-    if (resPhase) resPhase.textContent = phaseTitle;
-    if (resTeam) resTeam.textContent = teamPod;
-    if (adviceText) adviceText.textContent = advice;
+    if (resSpeed) resSpeed.textContent = speedText;
+    if (resReview) resReview.textContent = 'Within 24 Hours';
 
     if (statusPill) {
-      if (isAligned) {
-        statusPill.textContent = '100% Budget Aligned';
-        statusPill.className = 'budget-status-pill';
+      statusPill.textContent = 'Subject to Team Approval';
+      statusPill.className = 'budget-status-pill';
+    }
+
+    if (scopeTierName) {
+      scopeTierName.textContent = 'Client-Specified Budget Proposal';
+    }
+
+    if (adviceText) {
+      if (rawVal > 0) {
+        adviceText.textContent = `I-submit ang inyong proposed budget na ${symbol}${formatNumber(rawVal)} ${currentCurrency}. I-re-review ito ng Techxodia engineering leads para kumpirmahin kung pasok sa scope o mag-propose ng adjusted roadmap.`;
       } else {
-        statusPill.textContent = 'Flexible Phasing Advised';
-        statusPill.className = 'budget-status-pill flexible';
+        adviceText.textContent = `Mag-type ng inyong target budget. I-re-review ito ng Techxodia engineering leads para kumpirmahin kung pasok o mag-propose ng roadmap.`;
       }
     }
   }
@@ -602,56 +542,25 @@ function initEstimator() {
       const currentVal = parseFloat(budgetInput?.value) || 0;
       if (prevCurrency !== currentCurrency) {
         if (currentCurrency === 'PHP') {
-          // Convert USD to approximate PHP
           budgetInput.value = currentVal ? Math.round(currentVal * 56) : 250000;
           budgetInput.step = '10000';
-          budgetInput.min = '20000';
-          budgetInput.placeholder = 'Enter budget in PHP (e.g. 250,000)';
+          budgetInput.min = '5000';
+          budgetInput.placeholder = 'Type budget in PHP (e.g. 150,000)';
         } else {
-          // Convert PHP to USD
           budgetInput.value = currentVal ? Math.round(currentVal / 56) : 5000;
-          budgetInput.step = '500';
-          budgetInput.min = '500';
-          budgetInput.placeholder = 'Enter budget in USD (e.g. 5,000)';
+          budgetInput.step = '100';
+          budgetInput.min = '100';
+          budgetInput.placeholder = 'Type budget in USD (e.g. 3,500)';
         }
       }
 
-      // Update active preset matching
-      syncPresetChips();
       calculate();
     });
   });
-
-  // Preset chips events
-  presetChips.forEach((chip) => {
-    chip.addEventListener('click', () => {
-      presetChips.forEach((c) => c.classList.remove('active'));
-      chip.classList.add('active');
-
-      const targetVal = currentCurrency === 'PHP' ? chip.dataset.php : chip.dataset.usd;
-      if (budgetInput && targetVal) {
-        budgetInput.value = targetVal;
-      }
-      calculate();
-    });
-  });
-
-  function syncPresetChips() {
-    const val = parseFloat(budgetInput?.value) || 0;
-    presetChips.forEach((c) => {
-      const matchVal = parseFloat(currentCurrency === 'PHP' ? c.dataset.php : c.dataset.usd);
-      if (matchVal === val) {
-        c.classList.add('active');
-      } else {
-        c.classList.remove('active');
-      }
-    });
-  }
 
   // Manual input events
   if (budgetInput) {
     budgetInput.addEventListener('input', () => {
-      syncPresetChips();
       calculate();
     });
   }
@@ -670,7 +579,7 @@ function initEstimator() {
   bindChips(aiChips);
   bindChips(speedChips);
 
-  // Prefill Contact Form with Client's Specified Budget
+  // Prefill Contact Form with Client's Proposed Budget for Approval
   const prefillBtn = document.getElementById('btn-prefill-inquiry');
   if (prefillBtn) {
     prefillBtn.addEventListener('click', () => {
@@ -678,14 +587,12 @@ function initEstimator() {
       const budgetField = document.getElementById('contact-budget');
 
       const currentBudgetDisplay = priceRangeVal?.textContent || '$5,000 USD';
-      const tierDisplay = scopeTierName?.textContent || 'Rapid Launch MVP';
-      const phaseDisplay = resPhase?.textContent || 'Phase 1: High-Impact Core MVP';
       const platformDisplay = resPlatform?.textContent || 'Web Application';
       const aiDisplay = resAi?.textContent || 'Lean Core Backend (MVP)';
-      const deliveryDisplay = timeRangeVal?.textContent || '2-4 Weeks';
+      const speedDisplay = resSpeed?.textContent || 'Standard Sprint Pacing';
 
       if (msgField) {
-        msgField.value = `Hi Techxodia team,\n\nI would like to discuss building a project tailored to my budget:\n• Target Budget: ${currentBudgetDisplay}\n• Target Scope: ${tierDisplay} (${phaseDisplay})\n• Platform: ${platformDisplay}\n• Features: ${aiDisplay}\n• Expected Delivery: ${deliveryDisplay}\n\nProject details & goals: `;
+        msgField.value = `Hi Techxodia team,\n\nI would like to submit my proposed project budget for team review and approval:\n• Proposed Budget: ${currentBudgetDisplay}\n• Target Platform: ${platformDisplay}\n• Feature Scope: ${aiDisplay}\n• Sprint Cadence: ${speedDisplay}\n\nProject Overview & Details: `;
       }
 
       if (budgetField) {

@@ -581,10 +581,10 @@
   <section class="estimator-section" id="estimator">
     <div class="container">
       <div class="section-title-wrap">
-        <span class="sub-title">Budget &amp; Scope Matcher</span>
-        <h2 class="section-title">Built around your target budget.</h2>
+        <span class="sub-title">Budget Proposal &amp; Scope</span>
+        <h2 class="section-title">Name your budget. We review and approve.</h2>
         <p class="section-desc">
-          Tell us what you want to invest. We design the optimal scope, sprint cadence, and architecture so you get the highest ROI without sticker shock.
+          Enter what you want to invest along with your target requirements. Our engineering leads review your scope and proposal to approve or adjust within 24 hours.
         </p>
       </div>
 
@@ -595,7 +595,7 @@
             <!-- Scope 0: Client Target Budget -->
             <div class="est-row budget-input-row">
               <div class="budget-label-wrap">
-                <label class="est-label" for="client-budget-input" style="margin-bottom:0;">Your Target Budget</label>
+                <label class="est-label" for="client-budget-input" style="margin-bottom:0;">Your Proposed Budget</label>
                 <div class="currency-toggle" id="currency-toggle">
                   <button type="button" class="curr-btn active" data-currency="USD">USD ($)</button>
                   <button type="button" class="curr-btn" data-currency="PHP">PHP (₱)</button>
@@ -604,15 +604,11 @@
               
               <div class="budget-input-wrapper">
                 <span class="budget-symbol" id="budget-curr-symbol">$</span>
-                <input type="number" id="client-budget-input" class="budget-text-input" placeholder="Enter your budget (e.g. 5,000)" min="500" step="500" value="5000">
+                <input type="number" id="client-budget-input" class="budget-text-input" placeholder="Type your budget (e.g. 3,500)" min="100" step="100" value="5000">
               </div>
-
-              <div class="budget-presets" id="budget-presets">
-                <button type="button" class="preset-chip active" data-usd="5000" data-php="250000">Starter MVP</button>
-                <button type="button" class="preset-chip" data-usd="12000" data-php="600000">Core Product</button>
-                <button type="button" class="preset-chip" data-usd="25000" data-php="1250000">Scale &amp; AI</button>
-                <button type="button" class="preset-chip" data-usd="45000" data-php="2250000">Enterprise Pod</button>
-              </div>
+              <p style="font-size: 0.82rem; color: var(--text-dim); margin: 6px 0 0 0;">
+                Client-driven budgeting: Kayo ang magtatakda kung magkano ang budget ninyo, at i-re-review ng aming team kung pasok.
+              </p>
             </div>
 
             <!-- Scope 1 -->
@@ -649,24 +645,19 @@
           <!-- Total Card -->
           <div class="est-result-card">
             <div class="result-badge-row">
-              <div class="result-header">Tailored Scope Match</div>
-              <span class="budget-status-pill" id="budget-status-pill">100% Budget Aligned</span>
+              <div class="result-header">Your Proposed Scope</div>
+              <span class="budget-status-pill" id="budget-status-pill">Subject to Team Approval</span>
             </div>
             
             <div class="price-display">
-              <span class="price-label">Your Specified Budget</span>
-              <div class="price-range" id="price-range-val">$5,000</div>
-              <div class="scope-tier-name" id="scope-tier-name">Rapid Launch MVP</div>
-              <div class="time-range" id="time-range-val">Estimated Delivery: 2–4 Weeks</div>
+              <span class="price-label">Your Proposed Investment</span>
+              <div class="price-range" id="price-range-val">$5,000 USD</div>
+              <div class="scope-tier-name" id="scope-tier-name">Client-Specified Budget Proposal</div>
             </div>
 
             <div class="result-details">
               <div class="res-item">
-                <span>Recommended Phase:</span>
-                <strong id="res-phase">Phase 1: High-Impact Core MVP</strong>
-              </div>
-              <div class="res-item">
-                <span>Platform:</span>
+                <span>Selected Platform:</span>
                 <strong id="res-platform">Web Application</strong>
               </div>
               <div class="res-item">
@@ -674,20 +665,24 @@
                 <strong id="res-ai">Lean Core Backend (MVP)</strong>
               </div>
               <div class="res-item">
-                <span>Team Pod:</span>
-                <strong id="res-team">Product Lead + Full-Stack Engineer</strong>
+                <span>Sprint Cadence:</span>
+                <strong id="res-speed">Standard Sprint Pacing</strong>
+              </div>
+              <div class="res-item">
+                <span>Review Window:</span>
+                <strong id="res-review">Within 24 Hours</strong>
               </div>
             </div>
 
             <div class="scope-advice-box" id="scope-advice-box">
-              <span class="advice-icon">💡</span>
+              <span class="advice-icon">📋</span>
               <p id="scope-advice-text">
-                Great fit for testing the market fast. We focus on core conversion flows and essential functionality.
+                I-submit ang inyong proposed budget. I-re-review ito ng Techxodia engineering leads para kumpirmahin kung pasok sa scope o mag-propose ng adjusted roadmap.
               </p>
             </div>
 
             <button type="button" class="btn btn-primary" id="btn-prefill-inquiry" style="width:100%; margin-top:18px;">
-              Discuss Project for My Budget →
+              Submit Budget for Approval →
             </button>
           </div>
         </div>
