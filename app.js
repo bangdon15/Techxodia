@@ -117,11 +117,35 @@ function initCaseStudyModal() {
   const bodyContent = document.getElementById('modal-body-content');
 
   const caseStudies = {
+    obelisk: {
+      tag: 'Enterprise SaaS Cloud Platform • Applied AI Copilot',
+      title: 'Obelisk by TechXodia — SaaS Cloud Platform',
+      client: 'TechXodia AI Labs & Enterprise Showcase',
+      liveUrl: 'https://obelisk-by-techxodia.vercel.app/',
+      repoUrl: 'https://github.com/bangdon15/Techxodia-AIprompting',
+      image: 'obelisk.png',
+      borderColor: 'rgba(0, 229, 255, 0.45)',
+      shadowColor: 'rgba(0, 229, 255, 0.22)',
+      challenge: 'Modern cloud enterprises and high-growth SaaS platforms lose countless engineering hours and customer trust due to fragmented documentation, siloed API schemas, and sluggish ticket support. Standard conversational wrappers frequently hallucinate rate limits, fail to adhere to SLA policies, cannot verify source citations, and lack autonomous execution capabilities for CRM escalation.',
+      solution: 'Architected Obelisk: a production-grade, multi-domain enterprise knowledge base and autonomous AI customer support platform. Powered by hybrid dense-sparse RAG vector search (BM25 lexical scoring + cosine distance over 1536-dimensional embeddings), on-the-fly document token windowing and ingestion, step-by-step autonomous tool calling pipelines (vector search, cross-encoder reranking, billing delta calculation, and CRM lead dispatching), and an interactive Admin Knowledge Studio featuring live telemetry curves and latency benchmarks.',
+      impact: [
+        'Production Vercel deployment achieving ultra-responsive 120ms agent telemetry latency',
+        'Multi-tenant enterprise knowledge bases spanning Cloud Microservices, Fintech Billing API, and Global Logistics',
+        'Autonomous agent tool execution pipeline with dynamic CRM Lead Dispatch & < 15 Min SLA tickets',
+        'Strict RAG grounding with interactive §section citations and Vector Chunk Inspector modal',
+        'Zero-config Smart Simulation Engine alongside live OpenAI and Google Gemini API model switches',
+        'Full executive Admin Knowledge Studio with SVG inquiry traffic analytics and vector index memory inspection'
+      ],
+      tech: ['Modular JavaScript (ES6+)', 'Hybrid RAG Vector Search', '1536-dim Embeddings', 'HNSW Vector Index', 'Autonomous Tool Execution', 'Admin Telemetry Studio', 'Vercel Serverless', 'Web Audio Synthesizer']
+    },
     valence: {
       tag: 'Curated Architectural Atelier & Real Estate',
       title: 'Valence Architectural Holdings',
       client: 'Valence & Domain Atelier',
       liveUrl: 'https://valence-realestate.vercel.app',
+      image: 'valence.png',
+      borderColor: 'rgba(207, 184, 157, 0.35)',
+      shadowColor: 'rgba(207, 184, 157, 0.15)',
       challenge: 'The client needed an editorial, anti-template real estate platform rejecting generic corporate MLS templates to showcase brutalist monoliths, minimal villas, and high-value acquisitions as an architectural monograph.',
       solution: 'Engineered a bespoke web application with a simulated headless CMS property database, auto-rotating dynamic hero slider for top-valued assets, asymmetrical masonry layout, instant taxonomy filter engine, and accessible native modal quick-view system.',
       impact: [
@@ -137,6 +161,9 @@ function initCaseStudyModal() {
       title: 'Casitas Resort Online Booking System',
       client: 'Casitas Resort & Private Stays',
       liveUrl: 'https://resort-booking-online.vercel.app/',
+      image: 'casitas.png',
+      borderColor: 'rgba(212, 163, 75, 0.35)',
+      shadowColor: 'rgba(212, 163, 75, 0.15)',
       challenge: 'The resort required a frictionless direct-booking web application where travelers can check live dates for five specific private casitas (Uno, Dos, Tres, Quatro, Singko), view rates, and obtain instant reservation codes without high third-party OTA commission fees.',
       solution: 'Developed an interactive booking engine featuring stay-date validation, automated price calculations based on casita tier, client-side booking storage engine, and a dual-view guest and administrative portal.',
       impact: [
@@ -220,58 +247,6 @@ function initCaseStudyModal() {
         'Receipt photo attachment pipeline with ML Kit parsing foundation'
       ],
       tech: ['Kotlin', 'Jetpack Compose', 'Material 3', 'Clean Architecture (MVVM)', 'Hilt DI', 'Room (SQLCipher)', 'Biometric API', 'Vico Charts', 'Coroutines & Flow']
-    },
-    krypton: {
-      tag: 'Fintech Platform',
-      title: 'Krypton Capital Trading Terminal',
-      client: 'Krypton Ltd. (London)',
-      challenge: 'The client needed an institutional web platform capable of ingesting high-throughput market streams without UI freezes or frame drops.',
-      solution: 'We engineered a high-performance React 19 and WebAssembly architecture with binary Protobuf streaming and automated order execution buffers.',
-      impact: [
-        'Sub-5ms tick-to-screen rendering latency',
-        '$80M+ daily algorithmic trade volume handled reliably',
-        'Zero dropped messages during peak global market hours'
-      ],
-      tech: ['React 19', 'TypeScript', 'Rust WebAssembly', 'WebSockets', 'TailwindCSS']
-    },
-    omnihealth: {
-      tag: 'Healthcare & EHR',
-      title: 'OmniHealth Telehealth Portal',
-      client: 'OmniHealth Inc. (San Francisco)',
-      challenge: 'Doctors were losing 3+ hours daily on manual clinical charting, and existing patient portals suffered from choppy video and poor mobile support.',
-      solution: 'Built an end-to-end encrypted WebRTC telehealth portal integrated with local AI transcription that drafts clinical SOAP notes automatically.',
-      impact: [
-        '68% reduction in physician charting overhead',
-        '100% HIPAA and SOC-2 Type II compliant on first audit',
-        'Over 120,000 successful telemedicine encounters'
-      ],
-      tech: ['Next.js', 'WebRTC', 'FastAPI', 'AWS HealthLake', 'PostgreSQL']
-    },
-    vaultx: {
-      tag: 'Mobile Banking',
-      title: 'VaultX NeoBank iOS & Android',
-      client: 'VaultX AG (Zurich)',
-      challenge: 'High-net-worth mobile wealth application requiring banking-grade biometric security and instant multi-currency global settlement.',
-      solution: 'Engineered native iOS (Swift) and Android (Kotlin) apps with hardware Secure Enclave encryption and multi-signature authorization keys.',
-      impact: [
-        '$1.2B in custody assets secured without a single breach',
-        'Average transfer settlement completed in 0.4 seconds',
-        '4.9-star average rating across App Store & Google Play'
-      ],
-      tech: ['SwiftUI', 'Kotlin Multiplatform', 'gRPC', 'AWS Key Management']
-    },
-    aura: {
-      tag: '3D & Spatial Commerce',
-      title: 'Aura 3D Product Customizer',
-      client: 'Aura Studio (Milan)',
-      challenge: 'Luxury custom furniture brand needed an in-browser 3D configuration tool that loaded fast on mobile devices without lag.',
-      solution: 'Developed a custom Three.js renderer utilizing Draco mesh compression to deliver photorealistic interactive rendering under 1.5s.',
-      impact: [
-        '28% increase in direct e-commerce checkout conversion',
-        '+340% increase in user session engagement time',
-        'Smooth 60 FPS performance across 98% of mobile devices'
-      ],
-      tech: ['Three.js', 'WebGL', 'Shopify Plus', 'React', 'GLSL']
     }
   };
 
@@ -287,12 +262,20 @@ function initCaseStudyModal() {
             <div style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--primary); letter-spacing: 0.05em;">
               ${data.tag}
             </div>
-            ${data.liveUrl ? `
-              <a href="${data.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn-live-site" style="font-size: 0.78rem; padding: 4px 10px;">
-                <span>${data.liveUrl.includes('github.com') ? 'View on GitHub' : 'Launch Live Site'}</span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-            ` : ''}
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              ${data.liveUrl ? `
+                <a href="${data.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn-live-site" style="font-size: 0.78rem; padding: 4px 10px;">
+                  <span>Launch Live Site</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              ` : ''}
+              ${data.repoUrl ? `
+                <a href="${data.repoUrl}" target="_blank" rel="noopener noreferrer" class="btn-live-site" style="font-size: 0.78rem; padding: 4px 10px; background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.15);">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  <span>View GitHub</span>
+                </a>
+              ` : ''}
+            </div>
           </div>
           <h3 class="modal-project-title">${data.title}</h3>
           <p class="modal-project-client">Client: ${data.client}</p>
@@ -337,7 +320,7 @@ function initCaseStudyModal() {
             </div>
           </div>
         ` : data.image ? `
-          <div style="margin-bottom: 22px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(226, 114, 91, 0.35); box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 24px rgba(226, 114, 91, 0.15); background: #07090E;">
+          <div style="margin-bottom: 22px; border-radius: 12px; overflow: hidden; border: 1px solid ${data.borderColor || 'rgba(255, 255, 255, 0.15)'}; box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 24px ${data.shadowColor || 'rgba(0, 0, 0, 0.3)'}; background: #07090E;">
             <img src="${data.image}" alt="${data.title}" style="width: 100%; height: auto; max-height: 480px; object-fit: contain; display: block; margin: 0 auto;">
           </div>
         ` : ''}
@@ -365,6 +348,23 @@ function initCaseStudyModal() {
             ${data.tech.map((t) => `<span style="font-size: 0.78rem; background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; color: #FFF;">${t}</span>`).join('')}
           </div>
         </div>
+
+        ${data.liveUrl || data.repoUrl ? `
+          <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; gap: 12px; flex-wrap: wrap;">
+            ${data.liveUrl ? `
+              <a href="${data.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="display: inline-flex; align-items: center; gap: 8px;">
+                <span>Visit Live Platform</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            ` : ''}
+            ${data.repoUrl ? `
+              <a href="${data.repoUrl}" target="_blank" rel="noopener noreferrer" class="btn-live-site" style="font-size: 0.85rem; padding: 7px 14px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); display: inline-flex; align-items: center; gap: 8px; color: #FFF;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>Browse Code on GitHub</span>
+              </a>
+            ` : ''}
+          </div>
+        ` : ''}
       `;
 
       // Wire up interactive gallery controls if screens exist
