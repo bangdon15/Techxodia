@@ -498,11 +498,7 @@ function initEstimator() {
     const symbol = currentCurrency === 'PHP' ? '₱' : '$';
 
     if (priceRangeVal) {
-      if (rawVal > 0) {
-        priceRangeVal.textContent = `${symbol}${formatNumber(rawVal)} ${currentCurrency}`;
-      } else {
-        priceRangeVal.textContent = `Specify Your Budget`;
-      }
+      priceRangeVal.textContent = `${symbol}${formatNumber(rawVal)} ${currentCurrency}`;
     }
 
     if (resPlatform) resPlatform.textContent = platformName;
@@ -523,7 +519,7 @@ function initEstimator() {
       if (rawVal > 0) {
         adviceText.textContent = `I-submit ang inyong proposed budget na ${symbol}${formatNumber(rawVal)} ${currentCurrency}. I-re-review ito ng Techxodia engineering leads para kumpirmahin kung pasok sa scope o mag-propose ng adjusted roadmap.`;
       } else {
-        adviceText.textContent = `Mag-type ng inyong target budget. I-re-review ito ng Techxodia engineering leads para kumpirmahin kung pasok o mag-propose ng roadmap.`;
+        adviceText.textContent = `I-submit ang inyong proposed budget (kasalukuyang ${symbol}0 ${currentCurrency}). I-re-review ito ng Techxodia engineering leads para kumpirmahin kung pasok sa scope o mag-propose ng adjusted roadmap.`;
       }
     }
   }
@@ -542,15 +538,15 @@ function initEstimator() {
       const currentVal = parseFloat(budgetInput?.value) || 0;
       if (prevCurrency !== currentCurrency) {
         if (currentCurrency === 'PHP') {
-          budgetInput.value = currentVal ? Math.round(currentVal * 56) : 250000;
-          budgetInput.step = '10000';
-          budgetInput.min = '5000';
-          budgetInput.placeholder = 'Type budget in PHP (e.g. 150,000)';
+          budgetInput.value = currentVal ? Math.round(currentVal * 56) : 0;
+          budgetInput.step = '1000';
+          budgetInput.min = '0';
+          budgetInput.placeholder = '0';
         } else {
-          budgetInput.value = currentVal ? Math.round(currentVal / 56) : 5000;
-          budgetInput.step = '100';
-          budgetInput.min = '100';
-          budgetInput.placeholder = 'Type budget in USD (e.g. 3,500)';
+          budgetInput.value = currentVal ? Math.round(currentVal / 56) : 0;
+          budgetInput.step = '50';
+          budgetInput.min = '0';
+          budgetInput.placeholder = '0';
         }
       }
 
@@ -586,7 +582,7 @@ function initEstimator() {
       const msgField = document.getElementById('contact-msg');
       const budgetField = document.getElementById('contact-budget');
 
-      const currentBudgetDisplay = priceRangeVal?.textContent || '$5,000 USD';
+      const currentBudgetDisplay = priceRangeVal?.textContent || '$0 USD';
       const platformDisplay = resPlatform?.textContent || 'Web Application';
       const aiDisplay = resAi?.textContent || 'Lean Core Backend (MVP)';
       const speedDisplay = resSpeed?.textContent || 'Standard Sprint Pacing';

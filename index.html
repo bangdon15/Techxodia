@@ -604,7 +604,7 @@
               
               <div class="budget-input-wrapper">
                 <span class="budget-symbol" id="budget-curr-symbol">$</span>
-                <input type="number" id="client-budget-input" class="budget-text-input" placeholder="Type your budget (e.g. 3,500)" min="100" step="100" value="5000">
+                <input type="number" id="client-budget-input" class="budget-text-input" placeholder="0" min="0" step="50" value="0">
               </div>
               <p style="font-size: 0.82rem; color: var(--text-dim); margin: 6px 0 0 0;">
                 Client-driven budgeting: Kayo ang magtatakda kung magkano ang budget ninyo, at i-re-review ng aming team kung pasok.
@@ -651,7 +651,7 @@
             
             <div class="price-display">
               <span class="price-label">Your Proposed Investment</span>
-              <div class="price-range" id="price-range-val">$5,000 USD</div>
+              <div class="price-range" id="price-range-val">$0 USD</div>
               <div class="scope-tier-name" id="scope-tier-name">Client-Specified Budget Proposal</div>
             </div>
 
@@ -742,14 +742,10 @@
               </div>
               <div class="form-field">
                 <label for="contact-budget">Target Budget (USD or PHP)</label>
-                <input type="text" id="contact-budget" name="budget" class="input-text" placeholder="e.g. $5,000, ₱250k, or Flexible" list="budget-suggestions">
+                <input type="text" id="contact-budget" name="budget" class="input-text" placeholder="e.g. Your proposed budget (USD / PHP)" list="budget-suggestions">
                 <datalist id="budget-suggestions">
-                  <option value="$3,000 – $5,000 (Starter MVP)">
-                  <option value="$5,000 – $15,000 (Core Build)">
-                  <option value="$15,000 – $30,000 (Scale &amp; AI)">
-                  <option value="₱150,000 – ₱300,000 (MVP)">
-                  <option value="₱300,000 – ₱750,000 (Core)">
-                  <option value="Flexible / Let's Discuss">
+                  <option value="Custom Proposed Budget">
+                  <option value="Flexible / Subject to Team Review">
                 </datalist>
               </div>
             </div>
