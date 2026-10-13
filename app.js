@@ -517,9 +517,9 @@ function initEstimator() {
 
     if (adviceText) {
       if (rawVal > 0) {
-        adviceText.textContent = `I-submit ang inyong proposed budget na ${symbol}${formatNumber(rawVal)} ${currentCurrency}. I-re-review ito ng Techxodia engineering leads para kumpirmahin kung pasok sa scope o mag-propose ng adjusted roadmap.`;
+        adviceText.textContent = `Submit your proposed budget of ${symbol}${formatNumber(rawVal)} ${currentCurrency}. Techxodia engineering leads will review this to confirm scope feasibility or propose an adjusted roadmap.`;
       } else {
-        adviceText.textContent = `I-submit ang inyong proposed budget (kasalukuyang ${symbol}0 ${currentCurrency}). I-re-review ito ng Techxodia engineering leads para kumpirmahin kung pasok sa scope o mag-propose ng adjusted roadmap.`;
+        adviceText.textContent = `Submit your proposed budget (${symbol}0 ${currentCurrency} currently). Techxodia engineering leads will review this to confirm scope feasibility or propose an adjusted roadmap.`;
       }
     }
   }
