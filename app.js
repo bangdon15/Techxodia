@@ -122,7 +122,6 @@ function initCaseStudyModal() {
       title: 'Obelisk by TechXodia — SaaS Cloud Platform',
       client: 'TechXodia AI Labs & Enterprise Showcase',
       liveUrl: 'https://obelisk-by-techxodia.vercel.app/',
-      repoUrl: 'https://github.com/bangdon15/Techxodia-AIprompting',
       image: 'obelisk.png',
       borderColor: 'rgba(0, 229, 255, 0.45)',
       shadowColor: 'rgba(0, 229, 255, 0.22)',
