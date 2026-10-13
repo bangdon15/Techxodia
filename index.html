@@ -309,63 +309,7 @@
           </div>
         </div>
 
-        <!-- Featured Mobile Project: FinPulse Android -->
-        <div class="project-card featured-live-card" data-category="mobile android">
-          <div class="project-preview preview-finpulse">
-            <div class="mockup-link-wrap case-study-btn" data-modal="finpulse" role="button" tabindex="0" aria-label="View FinPulse App Showcase Screenshot" style="cursor: pointer;">
-              <div class="mockup-screen mockup-real-screen finpulse-screen">
-                <div class="mockup-header">
-                  <div class="dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
-                  <div class="url">finpulse.android.app/showcase</div>
-                  <span class="mockup-live-status mockup-status-android"><span class="pulse-dot"></span>Android Native • 7 Screens</span>
-                </div>
-                <div class="mockup-image-frame finpulse-image-frame">
-                  <img src="finpulse.png" alt="FinPulse Android Personal Finance Tracker Theme Cover" class="mockup-real-img finpulse-cover-img">
-                  <div class="mockup-image-overlay">
-                    <span class="overlay-cta-pill">Explore All 7 Screens ↗</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-top-row">
-              <span class="project-tag">Android OS &amp; Jetpack Compose</span>
-              <span class="live-deploy-badge badge-android"><span class="dot-green"></span>App Showcase (7 Screens)</span>
-            </div>
-            <h3 class="project-title">FinPulse — Android Finance Tracker</h3>
-            <p class="project-summary">
-              A modern, secure Android personal finance application featuring Jetpack Compose declarative UI, encrypted Room storage with SQLCipher, biometric authentication, and interactive financial charts in an authentic Terracotta Sun aesthetic.
-            </p>
 
-            <!-- Mini screen pills for instant visual context -->
-            <div class="finpulse-screens-mini-strip">
-              <span class="screen-pill"><span class="pill-dot dot-terra"></span>Dashboard</span>
-              <span class="screen-pill"><span class="pill-dot dot-turq"></span>Vico Charts</span>
-              <span class="screen-pill"><span class="pill-dot dot-saffron"></span>Photo Receipts</span>
-              <span class="screen-pill"><span class="pill-dot dot-terra"></span>Fiscal Year</span>
-              <span class="screen-pill"><span class="pill-dot dot-turq"></span>M3 Calendar</span>
-              <span class="screen-pill"><span class="pill-dot dot-saffron"></span>Camera Ingest</span>
-              <span class="screen-pill"><span class="pill-dot dot-terra"></span>Debt Ratio</span>
-            </div>
-
-            <div class="tech-stack">
-              <span>Kotlin</span>
-              <span>Jetpack Compose</span>
-              <span>Material 3</span>
-              <span>Room + SQLCipher</span>
-              <span>Biometric API</span>
-              <span>Vico Charts</span>
-            </div>
-            <div class="project-actions">
-              <button class="btn btn-primary btn-sm case-study-btn" data-modal="finpulse">
-                <span>Explore All 7 Screens</span>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </button>
-              <button class="case-study-btn" data-modal="finpulse">Architecture &amp; Features →</button>
-            </div>
-          </div>
-        </div>
 
         <!-- Project 3: Krypton -->
         <div class="project-card" data-category="web">
@@ -581,10 +525,10 @@
   <section class="estimator-section" id="estimator">
     <div class="container">
       <div class="section-title-wrap">
-        <span class="sub-title">Budget Calculator</span>
-        <h2 class="section-title">Transparent project estimation.</h2>
+        <span class="sub-title">Budget &amp; Scope Matcher</span>
+        <h2 class="section-title">Built around your target budget.</h2>
         <p class="section-desc">
-          Select your requirements below to get a rough idea of timelines and investment for your build.
+          Tell us what you want to invest. We design the optimal scope, sprint cadence, and architecture so you get the highest ROI without sticker shock.
         </p>
       </div>
 
@@ -592,32 +536,55 @@
         <div class="estimator-grid">
           <div class="est-options">
             
+            <!-- Scope 0: Client Target Budget -->
+            <div class="est-row budget-input-row">
+              <div class="budget-label-wrap">
+                <label class="est-label" for="client-budget-input" style="margin-bottom:0;">Your Target Budget</label>
+                <div class="currency-toggle" id="currency-toggle">
+                  <button type="button" class="curr-btn active" data-currency="USD">USD ($)</button>
+                  <button type="button" class="curr-btn" data-currency="PHP">PHP (₱)</button>
+                </div>
+              </div>
+              
+              <div class="budget-input-wrapper">
+                <span class="budget-symbol" id="budget-curr-symbol">$</span>
+                <input type="number" id="client-budget-input" class="budget-text-input" placeholder="Enter your budget (e.g. 5,000)" min="500" step="500" value="5000">
+              </div>
+
+              <div class="budget-presets" id="budget-presets">
+                <button type="button" class="preset-chip active" data-usd="5000" data-php="250000">Starter MVP</button>
+                <button type="button" class="preset-chip" data-usd="12000" data-php="600000">Core Product</button>
+                <button type="button" class="preset-chip" data-usd="25000" data-php="1250000">Scale &amp; AI</button>
+                <button type="button" class="preset-chip" data-usd="45000" data-php="2250000">Enterprise Pod</button>
+              </div>
+            </div>
+
             <!-- Scope 1 -->
             <div class="est-row">
               <label class="est-label">Platform Type</label>
               <div class="est-chips" id="platform-chips">
-                <button type="button" class="chip active" data-cost="24000" data-weeks="6">Web Application</button>
-                <button type="button" class="chip" data-cost="28000" data-weeks="7">Mobile App (iOS/Android)</button>
-                <button type="button" class="chip" data-cost="42000" data-weeks="10">Web + Mobile</button>
+                <button type="button" class="chip active" data-platform="Web Application">Web Application</button>
+                <button type="button" class="chip" data-platform="Mobile App (iOS/Android)">Mobile App (iOS/Android)</button>
+                <button type="button" class="chip" data-platform="Web + Mobile">Web + Mobile Suite</button>
               </div>
             </div>
 
             <!-- Scope 2 -->
             <div class="est-row">
-              <label class="est-label">AI &amp; Backend Capabilities</label>
+              <label class="est-label">Feature &amp; Intelligence Depth</label>
               <div class="est-chips" id="ai-chips">
-                <button type="button" class="chip active" data-cost="4000" data-weeks="1">Standard Backend</button>
-                <button type="button" class="chip" data-cost="12000" data-weeks="2">Custom AI &amp; Search</button>
-                <button type="button" class="chip" data-cost="20000" data-weeks="4">Autonomous AI Agent System</button>
+                <button type="button" class="chip active" data-tier="Standard">Lean Core Backend (MVP)</button>
+                <button type="button" class="chip" data-tier="Custom AI">Smart AI &amp; Automations</button>
+                <button type="button" class="chip" data-tier="Autonomous Agents">Full Autonomous Agent Pod</button>
               </div>
             </div>
 
             <!-- Scope 3 -->
             <div class="est-row">
-              <label class="est-label">Speed &amp; Pod Allocation</label>
+              <label class="est-label">Delivery Pacing</label>
               <div class="est-chips" id="speed-chips">
-                <button type="button" class="chip active" data-mult="1.0">Standard Sprint</button>
-                <button type="button" class="chip" data-mult="1.25">Accelerated Sprint</button>
+                <button type="button" class="chip active" data-speed="Standard">Standard Sprint Pacing</button>
+                <button type="button" class="chip" data-speed="Accelerated">Accelerated / Dedicated Rush</button>
               </div>
             </div>
 
@@ -625,31 +592,46 @@
 
           <!-- Total Card -->
           <div class="est-result-card">
-            <div class="result-header">Estimated Project Scope</div>
+            <div class="result-badge-row">
+              <div class="result-header">Tailored Scope Match</div>
+              <span class="budget-status-pill" id="budget-status-pill">100% Budget Aligned</span>
+            </div>
             
             <div class="price-display">
-              <span class="price-label">Estimated Investment</span>
-              <div class="price-range" id="price-range-val">$28,000 – $34,000</div>
-              <div class="time-range" id="time-range-val">Typical Delivery: 7–9 Weeks</div>
+              <span class="price-label">Your Specified Budget</span>
+              <div class="price-range" id="price-range-val">$5,000</div>
+              <div class="scope-tier-name" id="scope-tier-name">Rapid Launch MVP</div>
+              <div class="time-range" id="time-range-val">Estimated Delivery: 2–4 Weeks</div>
             </div>
 
             <div class="result-details">
               <div class="res-item">
-                <span>Selected Platform:</span>
+                <span>Recommended Phase:</span>
+                <strong id="res-phase">Phase 1: High-Impact Core MVP</strong>
+              </div>
+              <div class="res-item">
+                <span>Platform:</span>
                 <strong id="res-platform">Web Application</strong>
               </div>
               <div class="res-item">
-                <span>Intelligence Tier:</span>
-                <strong id="res-ai">Standard Backend</strong>
+                <span>Feature Focus:</span>
+                <strong id="res-ai">Lean Core Backend (MVP)</strong>
               </div>
               <div class="res-item">
-                <span>Team:</span>
-                <span>Product Lead + 2 Full-Stack Engineers</span>
+                <span>Team Pod:</span>
+                <strong id="res-team">Product Lead + Full-Stack Engineer</strong>
               </div>
             </div>
 
+            <div class="scope-advice-box" id="scope-advice-box">
+              <span class="advice-icon">💡</span>
+              <p id="scope-advice-text">
+                Great fit for testing the market fast. We focus on core conversion flows and essential functionality.
+              </p>
+            </div>
+
             <button type="button" class="btn btn-primary" id="btn-prefill-inquiry" style="width:100%; margin-top:18px;">
-              Discuss This Project →
+              Discuss Project for My Budget →
             </button>
           </div>
         </div>
@@ -708,12 +690,16 @@
                 <input type="text" id="contact-company" class="input-text" placeholder="Acme Inc.">
               </div>
               <div class="form-field">
-                <label for="contact-budget">Estimated Budget</label>
-                <select id="contact-budget" class="input-text">
-                  <option value="25k-50k">$25k – $50k</option>
-                  <option value="50k-100k" selected>$50k – $100k</option>
-                  <option value="100k+">$100k+</option>
-                </select>
+                <label for="contact-budget">Target Budget (USD or PHP)</label>
+                <input type="text" id="contact-budget" class="input-text" placeholder="e.g. $5,000, ₱250k, or Flexible" list="budget-suggestions">
+                <datalist id="budget-suggestions">
+                  <option value="$3,000 – $5,000 (Starter MVP)">
+                  <option value="$5,000 – $15,000 (Core Build)">
+                  <option value="$15,000 – $30,000 (Scale &amp; AI)">
+                  <option value="₱150,000 – ₱300,000 (MVP)">
+                  <option value="₱300,000 – ₱750,000 (Core)">
+                  <option value="Flexible / Let's Discuss">
+                </datalist>
               </div>
             </div>
 

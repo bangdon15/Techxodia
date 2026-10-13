@@ -463,37 +463,197 @@ function initCaseStudyModal() {
    4. Project Estimator
    ========================================================================== */
 function initEstimator() {
+  const currencyToggleBtns = document.querySelectorAll('#currency-toggle .curr-btn');
+  const currSymbol = document.getElementById('budget-curr-symbol');
+  const budgetInput = document.getElementById('client-budget-input');
+  const presetChips = document.querySelectorAll('#budget-presets .preset-chip');
+
   const platformChips = document.querySelectorAll('#platform-chips .chip');
   const aiChips = document.querySelectorAll('#ai-chips .chip');
   const speedChips = document.querySelectorAll('#speed-chips .chip');
 
   const priceRangeVal = document.getElementById('price-range-val');
+  const scopeTierName = document.getElementById('scope-tier-name');
   const timeRangeVal = document.getElementById('time-range-val');
+  const resPhase = document.getElementById('res-phase');
   const resPlatform = document.getElementById('res-platform');
   const resAi = document.getElementById('res-ai');
+  const resTeam = document.getElementById('res-team');
+  const statusPill = document.getElementById('budget-status-pill');
+  const adviceText = document.getElementById('scope-advice-text');
+
+  let currentCurrency = 'USD'; // 'USD' or 'PHP'
+
+  function formatNumber(num) {
+    return Math.round(num).toLocaleString('en-US');
+  }
 
   function calculate() {
+    const rawVal = parseFloat(budgetInput?.value) || 0;
     const actPlatform = document.querySelector('#platform-chips .chip.active');
     const actAi = document.querySelector('#ai-chips .chip.active');
     const actSpeed = document.querySelector('#speed-chips .chip.active');
 
-    const pCost = parseFloat(actPlatform?.dataset.cost || 24000);
-    const aCost = parseFloat(actAi?.dataset.cost || 4000);
-    const mult = parseFloat(actSpeed?.dataset.mult || 1.0);
+    const platformName = actPlatform?.dataset.platform || actPlatform?.textContent || 'Web Application';
+    const aiTier = actAi?.dataset.tier || 'Standard';
+    const aiText = actAi?.textContent || 'Lean Core Backend (MVP)';
+    const speedPacing = actSpeed?.dataset.speed || 'Standard';
 
-    const subtotal = (pCost + aCost) * mult;
-    const min = Math.round(subtotal * 0.95);
-    const max = Math.round(subtotal * 1.15);
+    // Normalize budget to USD equivalent for matching logic (1 USD ≈ 56 PHP)
+    const usdEquiv = currentCurrency === 'PHP' ? (rawVal / 56) : rawVal;
+    const symbol = currentCurrency === 'PHP' ? '₱' : '$';
 
-    const pWeeks = parseInt(actPlatform?.dataset.weeks || 6);
-    const aWeeks = parseInt(actAi?.dataset.weeks || 1);
-    const totalWeeks = Math.round((pWeeks + aWeeks) / mult);
+    if (priceRangeVal) {
+      if (rawVal > 0) {
+        priceRangeVal.textContent = `${symbol}${formatNumber(rawVal)} ${currentCurrency}`;
+      } else {
+        priceRangeVal.textContent = `Specify Target Budget`;
+      }
+    }
 
-    if (priceRangeVal) priceRangeVal.textContent = `$${min.toLocaleString()} – $${max.toLocaleString()}`;
-    if (timeRangeVal) timeRangeVal.textContent = `Typical Delivery: ${totalWeeks}–${totalWeeks + 2} Weeks`;
+    if (resPlatform) resPlatform.textContent = platformName;
+    if (resAi) resAi.textContent = aiText;
 
-    if (resPlatform) resPlatform.textContent = actPlatform?.textContent || 'Web Application';
-    if (resAi) resAi.textContent = actAi?.textContent || 'Standard Backend';
+    // Determine scope tier, phasing, delivery, team pod, and advisory feedback
+    let tierTitle = 'Rapid Launch MVP';
+    let phaseTitle = 'Phase 1: High-Impact Core MVP';
+    let minWeeks = 2;
+    let maxWeeks = 4;
+    let teamPod = 'Product Lead + Full-Stack Engineer';
+    let isAligned = true;
+    let advice = 'Great fit for testing the market fast. We focus on core conversion flows and essential functionality.';
+
+    if (usdEquiv < 6000) {
+      tierTitle = 'Rapid Launch MVP';
+      phaseTitle = 'Phase 1: High-Impact Core MVP';
+      minWeeks = 2;
+      maxWeeks = 4;
+      teamPod = 'Senior Full-Stack Engineer';
+
+      if (platformName.includes('Web + Mobile') || aiTier === 'Autonomous Agents') {
+        isAligned = false;
+        advice = 'For a multi-platform or autonomous system with this budget, we recommend launching a high-impact Phase 1 Web MVP first, then rolling out mobile & agent pods in Phase 2 as revenue grows!';
+      } else {
+        advice = 'Cost-effective setup tailored for validation. Delivers a clean, responsive UI with reliable core backend architecture.';
+      }
+    } else if (usdEquiv >= 6000 && usdEquiv < 16000) {
+      tierTitle = 'Production Commercial Build';
+      phaseTitle = 'Version 1.0 Production Launch';
+      minWeeks = 4;
+      maxWeeks = 7;
+      teamPod = 'Product Lead + 2 Full-Stack Engineers';
+
+      if (aiTier === 'Autonomous Agents' && platformName.includes('Web + Mobile')) {
+        isAligned = false;
+        advice = 'Solid budget! We can deliver the complete web application with initial automations, followed by mobile apps in an agile follow-on sprint.';
+      } else {
+        advice = 'Healthy runway for a scalable, market-ready product with secure authentication, cloud database, and sleek custom animations.';
+      }
+    } else if (usdEquiv >= 16000 && usdEquiv < 32000) {
+      tierTitle = 'High-Growth Scale Platform';
+      phaseTitle = 'Multi-Platform + Intelligent Backend';
+      minWeeks = 6;
+      maxWeeks = 9;
+      teamPod = 'Product Lead + Senior Engineering Pod';
+      advice = 'Ideal runway for comprehensive multi-platform deployment (web + mobile), custom AI search, high-volume APIs, and automated CI/CD.';
+    } else {
+      tierTitle = 'Enterprise Autonomous System';
+      phaseTitle = 'Dedicated End-to-End Pod';
+      minWeeks = 8;
+      maxWeeks = 12;
+      teamPod = 'Dedicated Studio Pod (Lead, 3 Engineers, QA)';
+      advice = 'Full custom architecture with autonomous AI workflows, multi-platform ecosystem, high security compliance, and dedicated team availability.';
+    }
+
+    // Speed pacing adjustments
+    if (speedPacing === 'Accelerated') {
+      minWeeks = Math.max(1, Math.round(minWeeks * 0.75));
+      maxWeeks = Math.max(2, Math.round(maxWeeks * 0.75));
+    }
+
+    if (scopeTierName) scopeTierName.textContent = tierTitle;
+    if (timeRangeVal) timeRangeVal.textContent = `Estimated Delivery: ${minWeeks}–${maxWeeks} Weeks`;
+    if (resPhase) resPhase.textContent = phaseTitle;
+    if (resTeam) resTeam.textContent = teamPod;
+    if (adviceText) adviceText.textContent = advice;
+
+    if (statusPill) {
+      if (isAligned) {
+        statusPill.textContent = '100% Budget Aligned';
+        statusPill.className = 'budget-status-pill';
+      } else {
+        statusPill.textContent = 'Flexible Phasing Advised';
+        statusPill.className = 'budget-status-pill flexible';
+      }
+    }
+  }
+
+  // Currency toggle events
+  currencyToggleBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      currencyToggleBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const prevCurrency = currentCurrency;
+      currentCurrency = btn.dataset.currency;
+
+      if (currSymbol) currSymbol.textContent = currentCurrency === 'PHP' ? '₱' : '$';
+
+      const currentVal = parseFloat(budgetInput?.value) || 0;
+      if (prevCurrency !== currentCurrency) {
+        if (currentCurrency === 'PHP') {
+          // Convert USD to approximate PHP
+          budgetInput.value = currentVal ? Math.round(currentVal * 56) : 250000;
+          budgetInput.step = '10000';
+          budgetInput.min = '20000';
+          budgetInput.placeholder = 'Enter budget in PHP (e.g. 250,000)';
+        } else {
+          // Convert PHP to USD
+          budgetInput.value = currentVal ? Math.round(currentVal / 56) : 5000;
+          budgetInput.step = '500';
+          budgetInput.min = '500';
+          budgetInput.placeholder = 'Enter budget in USD (e.g. 5,000)';
+        }
+      }
+
+      // Update active preset matching
+      syncPresetChips();
+      calculate();
+    });
+  });
+
+  // Preset chips events
+  presetChips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      presetChips.forEach((c) => c.classList.remove('active'));
+      chip.classList.add('active');
+
+      const targetVal = currentCurrency === 'PHP' ? chip.dataset.php : chip.dataset.usd;
+      if (budgetInput && targetVal) {
+        budgetInput.value = targetVal;
+      }
+      calculate();
+    });
+  });
+
+  function syncPresetChips() {
+    const val = parseFloat(budgetInput?.value) || 0;
+    presetChips.forEach((c) => {
+      const matchVal = parseFloat(currentCurrency === 'PHP' ? c.dataset.php : c.dataset.usd);
+      if (matchVal === val) {
+        c.classList.add('active');
+      } else {
+        c.classList.remove('active');
+      }
+    });
+  }
+
+  // Manual input events
+  if (budgetInput) {
+    budgetInput.addEventListener('input', () => {
+      syncPresetChips();
+      calculate();
+    });
   }
 
   function bindChips(chips) {
@@ -510,21 +670,35 @@ function initEstimator() {
   bindChips(aiChips);
   bindChips(speedChips);
 
+  // Prefill Contact Form with Client's Specified Budget
   const prefillBtn = document.getElementById('btn-prefill-inquiry');
   if (prefillBtn) {
     prefillBtn.addEventListener('click', () => {
       const msgField = document.getElementById('contact-msg');
-      const budgetSelect = document.getElementById('contact-budget');
+      const budgetField = document.getElementById('contact-budget');
+
+      const currentBudgetDisplay = priceRangeVal?.textContent || '$5,000 USD';
+      const tierDisplay = scopeTierName?.textContent || 'Rapid Launch MVP';
+      const phaseDisplay = resPhase?.textContent || 'Phase 1: High-Impact Core MVP';
+      const platformDisplay = resPlatform?.textContent || 'Web Application';
+      const aiDisplay = resAi?.textContent || 'Lean Core Backend (MVP)';
+      const deliveryDisplay = timeRangeVal?.textContent || '2-4 Weeks';
 
       if (msgField) {
-        msgField.value = `Hi Techxodia team, I'd like to discuss building a project with the following scope:\n- Platform: ${resPlatform?.textContent}\n- Intelligence Tier: ${resAi?.textContent}\n- Estimated Scope: ${priceRangeVal?.textContent} (${timeRangeVal?.textContent})\n\nProject details: `;
+        msgField.value = `Hi Techxodia team,\n\nI would like to discuss building a project tailored to my budget:\n• Target Budget: ${currentBudgetDisplay}\n• Target Scope: ${tierDisplay} (${phaseDisplay})\n• Platform: ${platformDisplay}\n• Features: ${aiDisplay}\n• Expected Delivery: ${deliveryDisplay}\n\nProject details & goals: `;
       }
 
-      if (budgetSelect) {
-        budgetSelect.value = '50k-100k';
+      if (budgetField) {
+        budgetField.value = currentBudgetDisplay;
       }
 
-      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+          document.getElementById('contact-name')?.focus();
+        }, 500);
+      }
     });
   }
 
