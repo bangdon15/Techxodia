@@ -2200,7 +2200,7 @@ h1, h2, h3, h4 {
 
 .about-story-grid {
   display: grid;
-  grid-template-columns: 1.35fr 0.85fr;
+  grid-template-columns: 1.22fr 0.98fr;
   gap: 32px;
   align-items: stretch;
   margin-bottom: 36px;
@@ -2216,6 +2216,7 @@ h1, h2, h3, h4 {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .about-main-card::before {
@@ -2380,10 +2381,10 @@ h1, h2, h3, h4 {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: 22px 24px;
   display: flex;
-  align-items: flex-start;
-  gap: 20px;
+  align-items: center;
+  gap: 22px;
   box-shadow: var(--shadow-md);
   transition: all 0.25s ease;
   position: relative;
@@ -2416,11 +2417,11 @@ h1, h2, h3, h4 {
 
 .founder-photo-wrap {
   position: relative;
-  width: 96px;
-  height: 96px;
+  width: 140px;
+  height: 172px;
   border-radius: 18px;
   border: 2px solid var(--primary);
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+  box-shadow: 0 0 24px rgba(245, 158, 11, 0.25);
   flex-shrink: 0;
   overflow: visible;
   background: #111726;
@@ -2430,6 +2431,7 @@ h1, h2, h3, h4 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   border-radius: 16px;
   display: block;
   transition: transform 0.3s ease;
@@ -2451,7 +2453,7 @@ h1, h2, h3, h4 {
 
 .founder-avatar-placeholder span {
   font-family: var(--font-heading);
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 800;
   color: #FFFFFF;
   letter-spacing: -0.02em;
@@ -2459,14 +2461,14 @@ h1, h2, h3, h4 {
 
 .avatar-verified-badge {
   position: absolute;
-  bottom: -4px;
-  right: -4px;
-  width: 20px;
-  height: 20px;
+  bottom: -5px;
+  right: -5px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: var(--primary);
   color: #000;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 900;
   display: flex;
   align-items: center;
@@ -2479,8 +2481,10 @@ h1, h2, h3, h4 {
 .founder-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  justify-content: center;
+  gap: 6px;
   flex: 1;
+  min-width: 0;
 }
 
 .founder-header-line {
@@ -2495,6 +2499,7 @@ h1, h2, h3, h4 {
   font-size: 1.15rem;
   font-weight: 700;
   color: #FFFFFF;
+  line-height: 1.25;
 }
 
 .founder-tag-pill {
@@ -2516,17 +2521,17 @@ h1, h2, h3, h4 {
 }
 
 .founder-bio {
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   color: var(--text-muted);
   line-height: 1.55;
-  margin: 6px 0 8px 0;
+  margin: 4px 0 6px 0;
 }
 
 .founder-meta-row {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-top: auto;
+  margin-top: 2px;
   font-size: 0.78rem;
   color: var(--text-dim);
 }
